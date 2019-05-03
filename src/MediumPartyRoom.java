@@ -1,2 +1,2 @@
-public class MediumPartyRoom {
+public class MediumPartyRoom extends AbstractRoom{
 }

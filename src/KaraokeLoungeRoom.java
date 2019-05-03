@@ -1,2 +1,2 @@
-public class KaraokeLoungeRoom {
+public class KaraokeLoungeRoom extends AbstractRoom{
 }

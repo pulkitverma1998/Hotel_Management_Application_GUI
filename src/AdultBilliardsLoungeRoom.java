@@ -1,2 +1,3 @@
-public class AdultBilliardsLoungeRoom {
+public class AdultBilliardsLoungeRoom extends AbstractRoom{
+
 }

@@ -1,2 +1,3 @@
-public class AquaWorldRoom {
+public class AquaWorldRoom extends AbstractRoom{
+
 }

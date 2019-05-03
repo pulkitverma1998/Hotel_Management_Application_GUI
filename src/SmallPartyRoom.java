@@ -1,2 +1,2 @@
-public class SmallPartyRoom {
+public class SmallPartyRoom extends AbstractRoom{
 }
