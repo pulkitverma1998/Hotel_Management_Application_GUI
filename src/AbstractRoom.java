@@ -35,7 +35,7 @@ public abstract class AbstractRoom {
         return cost;
     }
 
-    public ArrayList<String> getIncludedInCost() {
+    public List<String> getIncludedInCost() {
         return includedInCost;
     }
 
