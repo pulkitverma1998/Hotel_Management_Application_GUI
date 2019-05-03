@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractRoom {
     private int numOfRooms;
     private String description;
     private int capacity;
     private int cost;
-    private ArrayList<String> includedInCost;
+    private List<String> includedInCost;
     //Upgrades included later
     private String restriction;
 
@@ -58,7 +59,7 @@ public abstract class AbstractRoom {
         this.cost = cost;
     }
 
-    public void setIncludedInCost(ArrayList<String> includedInCost) {
+    public void setIncludedInCost(List<String> includedInCost) {
         this.includedInCost = includedInCost;
     }
 
