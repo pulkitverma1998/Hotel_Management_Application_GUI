@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public abstract class AbstractRoom {
-    int numOfRooms;
-    String description;
-    int capacity;
-    int cost;
-    ArrayList<String> includedInCost;
+    private int numOfRooms;
+    private String description;
+    private int capacity;
+    private int cost;
+    private ArrayList<String> includedInCost;
     //Upgrades included later
-    String restriction;
+    private String restriction;
 
     public AbstractRoom(){
         this.numOfRooms = 0;
