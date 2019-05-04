@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class MealPlan {
+public class MealPlan extends AbstractRoom{
     private ArrayList<Pizza> pizzas ;
     private ArrayList<String> sodaFlavors;
     private String sodaName ;
@@ -26,5 +26,5 @@ public class MealPlan {
     public void setSodaName( String n ) {
         sodaName = n;
     }
-    //Stuff that I put
+
 }
