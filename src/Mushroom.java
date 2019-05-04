@@ -8,7 +8,7 @@ public class Mushroom extends ToppingDecorator {
     }
 
     @Override
-    public String getDescriptio(){
+    public String getDescription(){
         return pizza.getDescription() + ", Mushroom " ;
     }
 
