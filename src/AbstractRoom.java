@@ -67,7 +67,5 @@ public abstract class AbstractRoom{
         this.restriction = restriction;
     }
 
-
-
-
+    // change
 }
