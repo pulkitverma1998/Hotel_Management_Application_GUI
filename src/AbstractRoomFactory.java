@@ -8,6 +8,6 @@ public abstract  MediumPartyRoom createMediumPartyRoom();
 
 public abstract KaraokeLoungeRoom createKaraokeLoungeRoom();
 
-public abstract AdultBilliardsLoungeRoom createAdultBbilliardsRoom();
+public abstract AdultBilliardsLoungeRoom createAdultBilliardsRoom();
 
 }

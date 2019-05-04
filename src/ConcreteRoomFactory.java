@@ -1,4 +1,4 @@
-public class concreteRoomFactory extends AbstractRoomFactory {
+public class ConcreteRoomFactory extends AbstractRoomFactory {
 
     @Override
     public AquaWorldRoom createAquaWorldRoom() {
@@ -25,7 +25,7 @@ public class concreteRoomFactory extends AbstractRoomFactory {
     }
 
     @Override
-    public AdultBilliardsLoungeRoom createAdultBbilliardsRoom() {
+    public AdultBilliardsLoungeRoom createAdultBilliardsRoom() {
         AdultBilliardsLoungeRoom adultBilliardsLoungeRoom = new AdultBilliardsLoungeRoom();
         return adultBilliardsLoungeRoom;
     }

@@ -14,7 +14,4 @@ public class AquaWorldRoom extends AbstractRoom {
         super.setIncludedInCost(includedInCost);
         super.setRestriction("To access water facilities, bathing suits must be worn at all times.");
     }
-
-
-
 }
