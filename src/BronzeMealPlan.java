@@ -4,7 +4,7 @@ public class BronzeMealPlan extends MealPlan {
     private String  breadSticks ;
 
     public BronzeMealPlan() {
-        super( "" );
+        super(  );
     }
     public double getCost(){
         return 75 ;

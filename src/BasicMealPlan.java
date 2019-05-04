@@ -1,7 +1,7 @@
 public class BasicMealPlan extends MealPlan{
 
     public BasicMealPlan(){
-        super( "" );
+        super(  );
     }
 
     public double getCost() {

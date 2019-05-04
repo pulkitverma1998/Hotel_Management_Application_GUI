@@ -8,8 +8,11 @@ public class MealPlan extends AbstractRoom{
     public MealPlan(){
         sodaName = "" ;
     }
-    public MealPlan( String n ){
-        sodaName = n;
+
+    public MealPlan(ArrayList<Pizza> pizzas, ArrayList<String> sodaFlavors, String sodaName) {
+        this.pizzas = pizzas;
+        this.sodaFlavors = sodaFlavors;
+        this.sodaName = sodaName;
     }
 
     ///////////////////////////////////////////Work on this //////////////////////////////////////////////////
