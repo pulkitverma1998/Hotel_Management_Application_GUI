@@ -8,6 +8,9 @@ public class MealPlan extends AbstractRoom{
     public MealPlan(){
         sodaName = "" ;
     }
+    public MealPlan( String n ){
+        sodaName = n;
+    }
 
     ///////////////////////////////////////////Work on this //////////////////////////////////////////////////
     public void getUpgrades() {
