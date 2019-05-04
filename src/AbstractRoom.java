@@ -66,4 +66,8 @@ public abstract class AbstractRoom{
     public void setRestriction(String restriction) {
         this.restriction = restriction;
     }
+
+
+
+
 }
