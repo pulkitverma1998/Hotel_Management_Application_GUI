@@ -31,7 +31,7 @@ public abstract class AbstractRoom {
         return capacity;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
