@@ -13,6 +13,5 @@ public class SmallPartyRoom extends AbstractRoom{
         super.setCost(150);
         super.setIncludedInCost(includedCost);
         //upGrades
-
     }
 }
