@@ -5,7 +5,7 @@ abstract class Pizza {
     protected String description ;
 
     public Pizza () {
-        name = " " ;
+        name = "" ;
         description = "";
     }
 
