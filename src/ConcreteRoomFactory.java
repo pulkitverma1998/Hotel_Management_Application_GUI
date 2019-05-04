@@ -1,4 +1,12 @@
+import java.util.ArrayList;
+
 public class ConcreteRoomFactory extends AbstractRoomFactory {
+    public static ArrayList <AbstractRoom> allAvailableRooms;
+
+    public ConcreteRoomFactory(RoomType aRoom){
+        allAvailableRooms.add(createAbstractRoom(aRoom));
+    }
+
     @Override
     public AbstractRoom createAbstractRoom(RoomType aRoom) {
         AbstractRoom room = null;

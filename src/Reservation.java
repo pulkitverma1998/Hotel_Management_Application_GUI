@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Reservation {
     String mealPlan;
     String upgrades;
@@ -6,6 +8,7 @@ public class Reservation {
     String time;
     AbstractRoom reservedRoom;
 
+    ArrayList<AbstractRoom> myRooms = ConcreteRoomFactory.allAvailableRooms;
     public void update(){
     }
 
