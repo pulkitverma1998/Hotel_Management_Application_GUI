@@ -1,32 +1,21 @@
 public class ConcreteRoomFactory extends AbstractRoomFactory {
-
     @Override
-    public AquaWorldRoom createAquaWorldRoom() {
-        AquaWorldRoom aquaWorldRoom = new AquaWorldRoom();
-        return aquaWorldRoom;
-    }
-
-    @Override
-    public SmallPartyRoom createSmallPartyRoom() {
-        SmallPartyRoom smallPartyRoom = new SmallPartyRoom();
-        return smallPartyRoom;
-    }
-
-    @Override
-    public MediumPartyRoom createMediumPartyRoom() {
-        MediumPartyRoom mediumPartyRoom = new MediumPartyRoom();
-        return mediumPartyRoom;
-    }
-
-    @Override
-    public KaraokeLoungeRoom createKaraokeLoungeRoom() {
-        KaraokeLoungeRoom karaokeLoungeRoom = new KaraokeLoungeRoom();
-        return karaokeLoungeRoom;
-    }
-
-    @Override
-    public AdultBilliardsLoungeRoom createAdultBilliardsRoom() {
-        AdultBilliardsLoungeRoom adultBilliardsLoungeRoom = new AdultBilliardsLoungeRoom();
-        return adultBilliardsLoungeRoom;
+    public AbstractRoom createAbstractRoom(RoomType aRoom) {
+        AbstractRoom room = null;
+        switch(aRoom){
+            case AQUAWORLD_ROOM:
+                room = new AquaWorldRoom();
+                break;
+            case MEDIUM_PARY_ROOM:
+                room = new MediumPartyRoom();
+                break;
+            case SMALL_PARTY_ROOM:
+                room = new SmallPartyRoom();
+                break;
+            case ADULT_BILLIARDS_LOUNGE_ROOM:
+                room = new AdultBilliardsLoungeRoom();
+                break;
+        }
+        return room;
     }
 }
