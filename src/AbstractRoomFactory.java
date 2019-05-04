@@ -1,5 +1,4 @@
 public abstract class AbstractRoomFactory {
-
-public abstract AbstractRoom createAbstractRoom();
+    public abstract AbstractRoom createAbstractRoom(RoomType roomType);
 
 }
