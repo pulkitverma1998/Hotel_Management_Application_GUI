@@ -26,4 +26,5 @@ public class MealPlan {
     public void setSodaName( String n ) {
         sodaName = n;
     }
+    //Stuff that I put
 }
