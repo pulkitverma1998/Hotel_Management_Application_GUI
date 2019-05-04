@@ -1,5 +1,8 @@
-public class Cheese extends TopingDecorator {
+public class Cheese extends ToppingDecorator {
+
+    //instance variables
     Pizza pizza ;
+
     public Cheese(Pizza pizza){
         this.pizza = pizza ;
     }
@@ -10,8 +13,5 @@ public class Cheese extends TopingDecorator {
 
     }
 
-    @Override
-    public double getCost() {
-        return 0;
-    }
+
 }

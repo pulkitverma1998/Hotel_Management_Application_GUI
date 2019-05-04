@@ -1,4 +1,4 @@
 
-abstract class TopingDecorator extends Pizza{
+abstract class ToppingDecorator extends Pizza{
     public abstract String getDescription();
 }

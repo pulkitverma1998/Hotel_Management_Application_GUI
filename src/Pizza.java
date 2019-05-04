@@ -1,5 +1,5 @@
 
-abstract class Pizza {
+abstract class Pizza  {
     //instance variables
     private String name ;
     protected String description ;
@@ -10,5 +10,4 @@ abstract class Pizza {
     }
 
     public abstract String getDescription() ;
-    public abstract double getCost() ;
 }
