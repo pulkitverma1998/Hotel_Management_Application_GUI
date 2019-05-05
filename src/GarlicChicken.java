@@ -1,14 +1,12 @@
 public class GarlicChicken extends ToppingDecorator {
 
-    //instance variables
-    Pizza pizza ;
-
-    public GarlicChicken (Pizza pizza ){
-        this.pizza = pizza ;
+    public GarlicChicken(Pizza pizza) {
+        super(pizza);
     }
 
     @Override
-    public String getDescription(){
-        return pizza.getDescription() + ", GarlicChicken " ;
+    public void addToppings() {
+        super.addToppings();
+        System.out.print(", garlic chicken");
     }
 }

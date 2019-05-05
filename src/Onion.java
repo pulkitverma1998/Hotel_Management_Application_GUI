@@ -1,14 +1,12 @@
-public class Onion extends ToppingDecorator{
+public class Onion extends ToppingDecorator {
 
-    //instance variables
-    Pizza pizza ;
-
-    public Onion (Pizza pizza ) {
-        this.pizza = pizza ;
+    public Onion(Pizza pizza) {
+        super(pizza);
     }
 
     @Override
-    public String getDescription(){
-        return getDescription() + ", Onion " ;
+    public void addToppings() {
+        super.addToppings();
+        System.out.print(", onion");
     }
 }

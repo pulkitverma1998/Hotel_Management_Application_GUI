@@ -9,5 +9,8 @@ public class Main {
         System.out.println(anotherRoonm.getCapacity());
         //System.out.println();
         System.out.println(myRoom.getCapacity());
+
+        Pizza pizza = new BellPepper(new Sausage(new Onion(new BasicPizza())));
+        pizza.addToppings();
     }
 }

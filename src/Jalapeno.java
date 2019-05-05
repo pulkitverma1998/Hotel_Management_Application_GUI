@@ -1,14 +1,12 @@
 public class Jalapeno extends ToppingDecorator {
 
-    //instance variables
-    Pizza pizza ;
-
-    public Jalapeno(Pizza pizza ) {
-        this.pizza = pizza ;
+    public Jalapeno(Pizza pizza) {
+        super(pizza);
     }
 
     @Override
-    public String getDescription(){
-        return pizza.getDescription() + ", Jalapeno ";
+    public void addToppings() {
+        super.addToppings();
+        System.out.print(", jalapeno");
     }
 }

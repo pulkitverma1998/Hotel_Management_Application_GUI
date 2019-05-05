@@ -1,14 +1,12 @@
 public class Ham extends ToppingDecorator {
 
-    //instance Variables
-    Pizza pizza ;
-
-    public Ham( Pizza pizza ) {
-        this.pizza = pizza ;
+    public Ham(Pizza pizza) {
+        super(pizza);
     }
 
     @Override
-    public String getDescription() {
-        return pizza.getDescription() + ", Ham " ;
+    public void addToppings() {
+        super.addToppings();
+        System.out.print(", ham");
     }
 }
