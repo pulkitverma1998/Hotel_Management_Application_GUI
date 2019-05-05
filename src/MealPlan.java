@@ -7,11 +7,11 @@ public class MealPlan extends AbstractRoom {
     private ArrayList<String> sodaFlavors;
     private double cost;
 
-    public MealPlan() {
-        pizzas = new ArrayList<>();
+    public MealPlan(ArrayList<Pizza> _pizzas, ArrayList<String> _sodaFlavors) {
+        this.pizzas = _pizzas;
         noOfPizzas = 0;
         noOfSodas = 0;
-        sodaFlavors = new ArrayList<>();
+        this.sodaFlavors = _sodaFlavors;
         cost = 0.0;
     }
 
