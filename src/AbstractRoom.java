@@ -84,7 +84,4 @@ public abstract class AbstractRoom {
         this.restriction = restriction;
     }
 
-    // change by Ajay
-
-
 }
