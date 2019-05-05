@@ -19,5 +19,8 @@ public class Main {
 
         Pizza pizza = new BellPepper(new Sausage(new Onion(new BasicPizza())));
         pizza.addToppings();
+
+        BasicMealPlan basicMealPlan = new BasicMealPlan();
+        System.out.println(basicMealPlan.toString());
     }
 }

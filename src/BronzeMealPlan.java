@@ -1,12 +1,14 @@
+import java.util.ArrayList;
+
 public class BronzeMealPlan extends MealPlan {
 
-    private String salad ;
-    private String  breadSticks ;
+    private String salad;
+    private String  breadSticks;
 
     public BronzeMealPlan() {
-        super(  );
-    }
-    public double getCost(){
-        return 75 ;
+        super();
+        super.setNoOfPizzas(3);
+        super.setNoOfSodas(5);
+        super.setCost(75);
     }
 }

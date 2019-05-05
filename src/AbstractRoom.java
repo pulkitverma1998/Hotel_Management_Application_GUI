@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractRoom{
+public abstract class AbstractRoom {
     private int numOfRooms;
     private Boolean availability;
     private String description;
