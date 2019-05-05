@@ -3,12 +3,15 @@ import java.util.List;
 
 public abstract class AbstractRoom{
     private int numOfRooms;
+    private Boolean availability;
     private String description;
     private int capacity;
     private int cost;
     private List<String> includedInCost;
     //Upgrades included later
     private String restriction;
+    private ArrayList<Guest> waitlist = new ArrayList<>();
+
 
     public AbstractRoom(){
         this.numOfRooms = 0;
@@ -18,7 +21,20 @@ public abstract class AbstractRoom{
         this.includedInCost = new ArrayList<>();
         this.restriction = "";
     }
-
+    public void attach(Guest aGuest){
+        this.waitlist.add(aGuest);
+    }
+    public void detach(Guest aGuest){
+        this.waitlist.remove(aGuest);
+    }
+    public void Notify(){
+        for(Guest g: waitlist){
+            g.update();
+        }
+    }
+    public Boolean getAvailability(){
+        return availability;
+    }
     public int getNumOfRooms() {
         return numOfRooms;
     }
