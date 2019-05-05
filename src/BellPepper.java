@@ -1,9 +1,9 @@
 public class BellPepper extends ToppingDecorator {
 
     //instance variables
-    Pizza pizza ;
+    Pizza pizza;
 
-    public BellPepper ( Pizza pizza ) {
+    public BellPepper (Pizza pizza) {
         this.pizza = pizza ;
     }
 
