@@ -7,8 +7,8 @@ public class PlatinumMealPlan extends MealPlan {
     private ArrayList<String> wings;
     private ArrayList<String> iceCream;
 
-    public PlatinumMealPlan(ArrayList<String> _wings, ArrayList<String> _iceCream){
-        super();
+    public PlatinumMealPlan(ArrayList<Pizza> _pizzas, ArrayList<String> _sodaFlavors, ArrayList<String> _wings, ArrayList<String> _iceCream) {
+        super(_pizzas, _sodaFlavors);
         super.setNoOfPizzas(4);
         super.setNoOfSodas(5);
         super.setCost(150);
@@ -17,5 +17,4 @@ public class PlatinumMealPlan extends MealPlan {
         this.wings = _wings;
         this.iceCream = _iceCream;
     }
-
 }
