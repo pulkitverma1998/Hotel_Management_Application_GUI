@@ -12,7 +12,6 @@ public abstract class AbstractRoom {
     private String restriction;
     private ArrayList<Guest> waitlist = new ArrayList<>();
 
-
     public AbstractRoom(){
         this.numOfRooms = 0;
         this.description = "";
@@ -83,8 +82,5 @@ public abstract class AbstractRoom {
     public void setRestriction(String restriction) {
         this.restriction = restriction;
     }
-
-    // change by Ajay
-
 
 }
