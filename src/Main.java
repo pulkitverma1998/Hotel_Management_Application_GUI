@@ -17,7 +17,7 @@ public class Main {
         myRoom.attach(pulkit);
         myRoom.Notify();
 
-
-        Pizza pizza = null;
+        Pizza pizza = new BellPepper(new Sausage(new Onion(new BasicPizza())));
+        pizza.addToppings();
     }
 }
