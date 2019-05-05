@@ -32,6 +32,7 @@ public abstract class AbstractRoom{
             g.update();
         }
     }
+
     public Boolean getAvailability(){
         return availability;
     }

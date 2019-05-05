@@ -16,5 +16,8 @@ public class Main {
         myRoom.attach(ajay);
         myRoom.attach(pulkit);
         myRoom.Notify();
+
+
+        Pizza pizza = null;
     }
 }
