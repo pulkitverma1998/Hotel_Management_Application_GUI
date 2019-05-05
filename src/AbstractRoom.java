@@ -9,7 +9,7 @@ public abstract class AbstractRoom{
     private List<String> includedInCost;
     //Upgrades included later
     private String restriction;
-
+    private List<RoomUpgrades>;
     public AbstractRoom(){
         this.numOfRooms = 0;
         this.description = "";

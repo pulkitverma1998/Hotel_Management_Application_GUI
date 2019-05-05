@@ -3,35 +3,31 @@ import java.util.ArrayList;
 public class MealPlan extends AbstractRoom{
     private ArrayList<Pizza> pizzas ;
     private ArrayList<String> sodaFlavors;
-    private String sodaName ;
+    private double cost;
 
-    public MealPlan(){
-        sodaName = "" ;
+
+    public ArrayList<Pizza> getPizzas() {
+        return pizzas;
     }
 
-    public MealPlan(ArrayList<Pizza> pizzas, ArrayList<String> sodaFlavors, String sodaName) {
+    public void setPizzas(ArrayList<Pizza> pizzas) {
         this.pizzas = pizzas;
+    }
+
+    public ArrayList<String> getSodaFlavors() {
+        return sodaFlavors;
+    }
+
+    public void setSodaFlavors(ArrayList<String> sodaFlavors) {
         this.sodaFlavors = sodaFlavors;
-        this.sodaName = sodaName;
     }
 
-    ///////////////////////////////////////////Work on this //////////////////////////////////////////////////
-    public void getUpgrades() {
-
+    @Override
+    public double getCost() {
+        return cost;
     }
 
-    public double getCost(){
-        double totalCost = 0 ;
-
-        return totalCost ;
+    public void setCost(double cost) {
+        this.cost = cost;
     }
-
-    public String getSodaName(){
-        return sodaName ;
-    }
-
-    public void setSodaName( String n ) {
-        sodaName = n;
-    }
-
 }
