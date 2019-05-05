@@ -1,11 +1,9 @@
-public class BasicMealPlan extends MealPlan{
+public class BasicMealPlan extends MealPlan {
 
-    public BasicMealPlan(){
-        super(  );
+    public BasicMealPlan() {
+        super();
+        super.setNoOfPizzas(3);
+        super.setNoOfSodas(3);
+        super.setCost(65);
     }
-
-    public double getCost() {
-        return 65 ;
-    }
-
 }

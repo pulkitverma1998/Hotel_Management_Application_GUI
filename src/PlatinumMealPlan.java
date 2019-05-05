@@ -4,23 +4,18 @@ public class PlatinumMealPlan extends MealPlan {
     //instance variables
     private String salad ;
     private String breadSticks ;
-    private String chickenWings ;
-    String iceCreamName ;
-    ArrayList<String> iceCream ;
+    private ArrayList<String> wings;
+    private ArrayList<String> iceCream;
 
-    public PlatinumMealPlan(){
+    public PlatinumMealPlan(ArrayList<String> _wings, ArrayList<String> _iceCream){
         super();
-        this.salad = salad;
-        this.breadSticks = breadSticks;
-        this.chickenWings = chickenWings;
-        this.iceCreamName = iceCreamName;
+        super.setNoOfPizzas(4);
+        super.setNoOfSodas(5);
+        super.setCost(150);
+        this.salad = "salad";
+        this.breadSticks = "bread sticks";
+        this.wings = _wings;
+        this.iceCream = _iceCream;
     }
-    public PlatinumMealPlan( String salad, String breadSticks, String chickenWings, String iceCreamName, ArrayList<String> iceCream) {
 
-        this.salad = salad;
-        this.breadSticks = breadSticks;
-        this.chickenWings = chickenWings;
-        this.iceCreamName = iceCreamName;
-        this.iceCream = iceCream;
-    }
 }

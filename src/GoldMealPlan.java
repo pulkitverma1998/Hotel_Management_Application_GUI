@@ -1,48 +1,19 @@
-public class GoldMealPlan extends MealPlan{
+import java.util.ArrayList;
+
+public class GoldMealPlan extends MealPlan {
     //instance Variables
-    private String salad ;
-    private String breadSticks ;
-    private String wingName ;
+    private String salad;
+    private String breadSticks;
+    private ArrayList<String> wings;
 
-    public GoldMealPlan( String salad, String breadSticks, String wingName) {
-
-        this.salad = salad;
-        this.breadSticks = breadSticks;
-        this.wingName = wingName;
-    }
-
-    public GoldMealPlan() {
+    public GoldMealPlan(ArrayList<String> _wings) {
         super();
-        salad = "" ;
-        breadSticks = "";
-        wingName = "" ;
+        super.setNoOfPizzas(3);
+        super.setNoOfSodas(5);
+        super.setCost(120);
+        this.salad = "salad";
+        this.breadSticks = "bread sticks";
+        this.wings = _wings;
     }
 
-    public String getSalad() {
-        return salad;
-    }
-
-    public void setSalad(String salad) {
-        this.salad = salad;
-    }
-
-    public String getBreadSticks() {
-        return breadSticks;
-    }
-
-    public void setBreadSticks(String breadSticks) {
-        this.breadSticks = breadSticks;
-    }
-
-    public String getWingName() {
-        return wingName;
-    }
-
-    public void setWingName(String wingName) {
-        this.wingName = wingName;
-    }
-
-    public double getCost() {
-        return 120 ;
-    }
 }
