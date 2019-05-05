@@ -1,15 +1,12 @@
 public class Mushroom extends ToppingDecorator {
 
-    //instance Variables
-    Pizza pizza ;
-
-    public Mushroom (Pizza pizza) {
-        this.pizza = pizza ;
+    public Mushroom(Pizza pizza) {
+        super(pizza);
     }
 
     @Override
-    public String getDescription(){
-        return pizza.getDescription() + ", Mushroom " ;
+    public void addToppings() {
+        super.addToppings();
+        System.out.print(", mushroom");
     }
-
 }

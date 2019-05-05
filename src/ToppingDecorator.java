@@ -1,4 +1,13 @@
+public class ToppingDecorator implements Pizza {
 
-abstract class ToppingDecorator extends Pizza{
-    public abstract String getDescription();
+    protected Pizza pizza;
+
+    public ToppingDecorator(Pizza pizza) {
+        this.pizza = pizza;
+    }
+
+    @Override
+    public void addToppings() {
+        this.pizza.addToppings();
+    }
 }

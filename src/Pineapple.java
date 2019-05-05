@@ -1,15 +1,12 @@
-public class Pineapple extends ToppingDecorator{
+public class Pineapple extends ToppingDecorator {
 
-    //instance variable
-    Pizza pizza ;
-
-    public Pineapple(Pizza pizza ) {
-        this.pizza = pizza ;
+    public Pineapple(Pizza pizza) {
+        super(pizza);
     }
 
     @Override
-    public String getDescription(){
-        return pizza.getDescription() + ", Pineapple " ;
+    public void addToppings() {
+        super.addToppings();
+        System.out.print(", pineapple");
     }
-
 }

@@ -1,17 +1,12 @@
 public class Cheese extends ToppingDecorator {
 
-    //instance variables
-    Pizza pizza ;
-
-    public Cheese(Pizza pizza){
-        this.pizza = pizza ;
+    public Cheese(Pizza pizza) {
+        super(pizza);
     }
 
     @Override
-    public String getDescription() {
-        return pizza.getDescription() + ", Cheese ";
-
+    public void addToppings() {
+        super.addToppings();
+        System.out.print(", cheese");
     }
-
-
 }
