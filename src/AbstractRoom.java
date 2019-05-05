@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractRoom{
+    private boolean
     private int numOfRooms;
     private Boolean availability;
     private String description;
@@ -84,6 +85,6 @@ public abstract class AbstractRoom{
     }
 
     // change by Ajay
-
+    // change by diego
 
 }
