@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
         ConcreteRoomFactory aRoom = new ConcreteRoomFactory();
-        Guest ajay = new Guest("Ajay", "7142320342", "ajay@sexyladies.com", "3432498594839485");
-        Guest pulkit = new Guest("Pulkit", "743823243", "pulkit@sexyladies.com", "43534234234234");
+        Guest ajay = new Guest("Ajay", "7142320342", "ajay@yahoo.com", "3432498594839485");
+        Guest pulkit = new Guest("Pulkit", "743823243", "pulkit@yahoo.com", "43534234234234");
 
         AbstractRoom myRoom = null;
         AbstractRoom anotherRoonm = null;
@@ -20,7 +24,11 @@ public class Main {
         Pizza pizza = new BellPepper(new Sausage(new Onion(new BasicPizza())));
         pizza.addToppings();
 
-        BasicMealPlan basicMealPlan = new BasicMealPlan();
-        System.out.println(basicMealPlan.toString());
+        ArrayList<String> sodaFlavor = new ArrayList<>(Arrays.asList("Grape Soda", "Orange Soda"));
+        ArrayList<Pizza> pizzas = new ArrayList<>(Arrays.asList(pizza));
+        //BasicMealPlan basicMealPlan = new BasicMealPlan(pizza, sodaFlavor);
+        //System.out.println(basicMealPlan.toString());
+
+
     }
 }
