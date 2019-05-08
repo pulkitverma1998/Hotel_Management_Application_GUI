@@ -5,6 +5,7 @@ import java.util.List;
 public class AquaWorldRoom extends AbstractRoom {
 
     private List<String> includedInCost = new ArrayList<>(Arrays.asList("access to showers/lockers", "life guards on duty", "DJ", "table & chair set-up, Basic Meal Plan"));
+    private String hoursOperation = "M-Sun: 8AM - 2 AM";
 
     public AquaWorldRoom() {
         super.setNumOfRooms(1);

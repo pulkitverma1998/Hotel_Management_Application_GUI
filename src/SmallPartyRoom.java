@@ -5,6 +5,7 @@ import java.util.List;
 public class SmallPartyRoom extends AbstractRoom{
 
     private List<String> includedCost = new ArrayList<String>(Arrays.asList("Table & chair set-up","Basic Meal Plan"));
+    private String hoursOperation = "M-Sun: 9AM - 12 AM";
 
     public SmallPartyRoom(){
         super.setNumOfRooms(10);
