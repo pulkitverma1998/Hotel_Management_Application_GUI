@@ -3,9 +3,9 @@ public class RoomUpdrages {
     String name;
     double cost;
 
-    public RoomUpdrages(String name, double cost) {
-        this.name = name;
-        this.cost = cost;
+    public RoomUpdrages() {
+        this.name = "";
+        this.cost = 0;
     }
 
     public String getName() {

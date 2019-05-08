@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class AdultBilliardsLoungeRoom extends AbstractRoom {
     private List<String> included = new ArrayList<>(Arrays.asList("Access to pool table and cues"));
+    private String hoursOperation = "M-Sun: 9AM - 1 AM";
 
     public AdultBilliardsLoungeRoom() {
         super.setNumOfRooms(5);
