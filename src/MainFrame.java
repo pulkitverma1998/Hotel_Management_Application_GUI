@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -188,21 +190,25 @@ public class MainFrame extends JFrame {
      * @param roomDesc - the description of the room
      *
      * */
-    private void addARoomDescription(Container container, String imgDir, String roomName, String roomDesc) {
+    private void addARoomDescription(Container container, String imageURL, String roomName, String roomDesc) {
         JPanel p = new JPanel();
 
-        ImageIcon icon = new ImageIcon(imgDir);
-        JLabel picture = new JLabel(roomName, icon, JLabel.CENTER);
-        picture.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+        try {
+            URL url = new URL(imageURL);
+            ImageIcon icon = new ImageIcon(url);
+            JLabel picture = new JLabel(roomName, icon, JLabel.CENTER);
+            picture.setFont(new Font(Font.SERIF, Font.BOLD, 20));
 
-        //Set the position of the text, relative to the icon:
-        picture.setVerticalTextPosition(JLabel.TOP);
-        picture.setHorizontalTextPosition(JLabel.CENTER);
-        //Set border around
-        picture.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
+            //Set the position of the text, relative to the icon:
+            picture.setVerticalTextPosition(JLabel.TOP);
+            picture.setHorizontalTextPosition(JLabel.CENTER);
+            //Set border around
+            picture.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
 
-        p.add(picture);
-
+            p.add(picture);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         JTextArea description = new JTextArea(5,10);
         description.append(roomDesc);
@@ -216,9 +222,7 @@ public class MainFrame extends JFrame {
         container.add(p);
     }
 
-
-
-    class MealItemListener implements ActionListener{
+    class MealItemListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent click) {
@@ -236,7 +240,7 @@ public class MainFrame extends JFrame {
 
     }
 
-    class RoomItemListener implements ActionListener{
+    class RoomItemListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent select) {
@@ -245,9 +249,4 @@ public class MainFrame extends JFrame {
             if(item.getText().equals("Medium Party Rooms")) System.out.println("Display only Medium Party Room");
 
         }}
-
-    public static void main(String[] args
-    ) {
-        MainFrame f = new MainFrame();
-    }
 }
