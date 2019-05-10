@@ -51,8 +51,6 @@ public class MainFrame extends JFrame {
 
     }
 
-
-
     /*
      * initializes the default center panel and adds it to this frame
      * */
@@ -147,10 +145,7 @@ public class MainFrame extends JFrame {
 
         menu.add(submenu);
 
-
-
         menuBar.add(menu);
-
 
         //-------  RESERVATIONS MENU------------------
         menu = new JMenu("Reservations");
@@ -164,7 +159,6 @@ public class MainFrame extends JFrame {
         menuItem = new JMenuItem("Edit Existing Reservation...");
         menu.add(menuItem);
         menu.addSeparator();
-
 
         //Manage reservation sub menu
         submenu = new JMenu("Manage Current Reservation");
@@ -241,9 +235,6 @@ public class MainFrame extends JFrame {
         }
 
     }
-
-
-
 
     class RoomItemListener implements ActionListener{
 
