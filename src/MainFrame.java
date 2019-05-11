@@ -7,19 +7,15 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.URL;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import java.net.URL;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+
+import javax.swing.*;
 import javax.swing.border.Border;
 
 //import backend.AquaRoom;
@@ -48,10 +44,7 @@ public class MainFrame extends JFrame {
         this.createMenuBar();
         this.createDefaultPanel();
         this.setVisible(true);
-
     }
-
-
 
     /*
      * initializes the default center panel and adds it to this frame
@@ -64,12 +57,26 @@ public class MainFrame extends JFrame {
         panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 
         centerPanel.add(panelTitle);
-        addARoomDescription(centerPanel, "https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759", "Small Party Room" , "Small Party Room");
+        addARoomDescription(centerPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759" , "Small Party Room" , aquaWorldRoom.toString());
         addARoomDescription(centerPanel, "https://s3.amazonaws.com/cmop_production/images/3590/inline/Classroom.jpg?1497985491","Medium Party Room", "Medium Party Room");
         addARoomDescription(centerPanel, "https://media-cdn.tripadvisor.com/media/photo-s/0f/02/0c/1b/aqua-room.jpg", "Aqua Room" , "Aqua World Room");
 
         scrollPane = new JScrollPane(centerPanel);
         this.add(scrollPane, BorderLayout.CENTER);
+    }
+
+    private void createMediumPartyRoomPanel() {
+        JPanel mediumPartyRoomPanel = new JPanel();
+        mediumPartyRoomPanel.setLayout(new BoxLayout(mediumPartyRoomPanel, BoxLayout.Y_AXIS));
+        //Title of default view
+        JLabel panelTitle = new JLabel("Medium Party Rooms");
+        panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+
+        mediumPartyRoomPanel.add(panelTitle);
+        addARoomDescription(mediumPartyRoomPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759" , "Medium Party Room" , aquaWorldRoom.toString());
+        scrollPane = new JScrollPane(mediumPartyRoomPanel);
+        this.add(scrollPane, BorderLayout.CENTER);
+        this.add(mediumPartyRoomPanel);
     }
 
     /* initializes menu bar items and adds them to this window*/
@@ -147,10 +154,7 @@ public class MainFrame extends JFrame {
 
         menu.add(submenu);
 
-
-
         menuBar.add(menu);
-
 
         //-------  RESERVATIONS MENU------------------
         menu = new JMenu("Reservations");
@@ -164,7 +168,6 @@ public class MainFrame extends JFrame {
         menuItem = new JMenuItem("Edit Existing Reservation...");
         menu.add(menuItem);
         menu.addSeparator();
-
 
         //Manage reservation sub menu
         submenu = new JMenu("Manage Current Reservation");
@@ -194,21 +197,25 @@ public class MainFrame extends JFrame {
      * @param roomDesc - the description of the room
      *
      * */
-    private void addARoomDescription(Container container, String imgDir, String roomName, String roomDesc) {
+    private void addARoomDescription(Container container, String imageURL, String roomName, String roomDesc) {
         JPanel p = new JPanel();
 
-        ImageIcon icon = new ImageIcon(imgDir);
-        JLabel picture = new JLabel(roomName, icon, JLabel.CENTER);
-        picture.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+        try {
+            URL url = new URL(imageURL);
+            ImageIcon icon = new ImageIcon(url);
+            JLabel picture = new JLabel(roomName, icon, JLabel.CENTER);
+            picture.setFont(new Font(Font.SERIF, Font.BOLD, 20));
 
-        //Set the position of the text, relative to the icon:
-        picture.setVerticalTextPosition(JLabel.TOP);
-        picture.setHorizontalTextPosition(JLabel.CENTER);
-        //Set border around
-        picture.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
+            //Set the position of the text, relative to the icon:
+            picture.setVerticalTextPosition(JLabel.TOP);
+            picture.setHorizontalTextPosition(JLabel.CENTER);
+            //Set border around
+            picture.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
 
-        p.add(picture);
-
+            p.add(picture);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         JTextArea description = new JTextArea(5,10);
         description.append(roomDesc);
@@ -222,9 +229,7 @@ public class MainFrame extends JFrame {
         container.add(p);
     }
 
-
-
-    class MealItemListener implements ActionListener{
+    class MealItemListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent click) {
@@ -242,21 +247,17 @@ public class MainFrame extends JFrame {
 
     }
 
-
-
-
-    class RoomItemListener implements ActionListener{
+    class RoomItemListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent select) {
             JMenuItem item = (JMenuItem) select.getSource();
 
-            if(item.getText().equals("Medium Party Rooms")) System.out.println("Display only Medium Party Room");
-
+            if(item.getText().equals("Medium Party Rooms")) {
+                centerPanel.removeAll();
+                createMediumPartyRoomPanel();
+                revalidate();
+                repaint();
+            }
         }}
-
-    public static void main(String[] args
-    ) {
-        MainFrame f = new MainFrame();
-    }
 }
