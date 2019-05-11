@@ -37,7 +37,7 @@ public class Main {
         ArrayList<Pizza> pizzas = new ArrayList<>(Arrays.asList(pizza));
         //BasicMealPlan basicMealPlan = new BasicMealPlan(pizza, sodaFlavor);
         //System.out.println(basicMealPlan.toString());
-        MainFrame mainFrame = new NewReservationFrame();
+
 
        DateSpinner.createAndShowGUI();
 
