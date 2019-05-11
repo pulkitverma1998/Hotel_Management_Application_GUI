@@ -22,6 +22,8 @@ public class MainFrame extends JFrame {
     AbstractRoom smallParty = aRoom.createAbstractRoom(RoomType.SMALL_PARTY_ROOM);
     AbstractRoom mediumParty = aRoom.createAbstractRoom(RoomType.MEDIUM_PARY_ROOM);
     AbstractRoom aquaWorldRoom = aRoom.createAbstractRoom(RoomType.AQUAWORLD_ROOM);
+    AbstractRoom karaokeLounge = aRoom.createAbstractRoom(RoomType.KARAOKE_LOUNGE_ROOM);
+    AbstractRoom billiardLounge = aRoom.createAbstractRoom(RoomType.ADULT_BILLIARDS_LOUNGE_ROOM);
 
     //border settings used in the method addARoomDescription()
     Border raisedbevel = BorderFactory.createRaisedBevelBorder();
@@ -56,6 +58,23 @@ public class MainFrame extends JFrame {
         this.add(scrollPane, BorderLayout.CENTER);
     }
 
+    private void createDefaultLoungePanel() {
+        centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        //Title of default view
+        JLabel panelTitle = new JLabel("Lounge Rooms");
+        panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+
+        centerPanel.add(panelTitle);
+        addARoomDescription(centerPanel,"https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/10968581_659173427526066_7303907398316959276_n.jpg?_nc_cat=100&_nc_ht=scontent-lax3-2.xx&oh=a68fcbe09fdd2b22654eb41c5d336e39&oe=5D5B13DA" , "Karaoke Lounge Room" , karaokeLounge.toString());
+        addARoomDescription(centerPanel,"https://media-cdn.tripadvisor.com/media/photo-s/02/3d/8a/8e/adult-lounge-room.jpg" , "Adult Billiards Lounge Room" , billiardLounge.toString());
+
+        scrollPane = new JScrollPane(centerPanel);
+        this.add(scrollPane, BorderLayout.CENTER);
+    }
+
+
+
     private void createRoomPanel(String roomName) {
         centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
@@ -77,8 +96,32 @@ public class MainFrame extends JFrame {
             panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
             centerPanel.add(panelTitle);
             addARoomDescription(centerPanel, "https://media-cdn.tripadvisor.com/media/photo-s/0f/02/0c/1b/aqua-room.jpg", "Aqua Room" , aquaWorldRoom.toString());
-        } else if (roomName.equals("All")) {
+        } else if (roomName.equals("All Rooms")) {
             createDefaultPanel();
+        }
+        scrollPane = new JScrollPane(centerPanel);
+        this.add(scrollPane, BorderLayout.CENTER);
+        this.add(centerPanel);
+    }
+
+    private void createLounge(String loungeName) {
+        centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        JLabel panelTitle;
+        //Title of default view
+
+        if (loungeName.equals("Karaoke Lounges")) {
+            panelTitle = new JLabel("Karaoke Lounges");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addARoomDescription(centerPanel,"https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/10968581_659173427526066_7303907398316959276_n.jpg?_nc_cat=100&_nc_ht=scontent-lax3-2.xx&oh=a68fcbe09fdd2b22654eb41c5d336e39&oe=5D5B13DA" , "Karaoke Lounge Room" , karaokeLounge.toString());
+        } else if (loungeName.equals("Billiards Lounges")) {
+            panelTitle = new JLabel("Billiards Lounges");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addARoomDescription(centerPanel,"https://media-cdn.tripadvisor.com/media/photo-s/02/3d/8a/8e/adult-lounge-room.jpg" , "Adult Billiards Lounge Room" , billiardLounge.toString());
+        } else if (loungeName.equals("All Lounges")) {
+            createDefaultLoungePanel();
         }
         scrollPane = new JScrollPane(centerPanel);
         this.add(scrollPane, BorderLayout.CENTER);
@@ -100,7 +143,7 @@ public class MainFrame extends JFrame {
         submenu = new JMenu("Party Rooms");
 
 
-        menuItem = new JMenuItem("All");
+        menuItem = new JMenuItem("All Rooms");
         menuItem.addActionListener(new RoomItemListener());
         submenu.add(menuItem);
 
@@ -121,13 +164,16 @@ public class MainFrame extends JFrame {
         //Lounges Sub Menu
         submenu = new JMenu("Lounges");
 
-        menuItem = new JMenuItem("All");
+        menuItem = new JMenuItem("All Lounges");
+        menuItem.addActionListener(new RoomItemListener());
         submenu.add(menuItem);
 
         menuItem = new JMenuItem("Karaoke Lounges");
+        menuItem.addActionListener(new RoomItemListener());
         submenu.add(menuItem);
 
         menuItem = new JMenuItem("Billiards Lounges");
+        menuItem.addActionListener(new RoomItemListener());
         submenu.add(menuItem);
 
         menu.add(submenu);
@@ -271,9 +317,24 @@ public class MainFrame extends JFrame {
                 createRoomPanel("Aqua Room");
                 centerPanel.revalidate();
                 centerPanel.repaint();
-            } else if (item.getText().equals("All")) {
+            } else if (item.getText().equals("All Rooms")) {
                 centerPanel.removeAll();
-                createRoomPanel("All");
+                createRoomPanel("All Rooms");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            } else if (item.getText().equals("Karaoke Lounges")) {
+                centerPanel.removeAll();
+                createLounge("Karaoke Lounges");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            } else if (item.getText().equals("Billiards Lounges")) {
+                centerPanel.removeAll();
+                createLounge("Billiards Lounges");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            } else if (item.getText().equals("All Lounges")) {
+                centerPanel.removeAll();
+                createLounge("All Lounges");
                 centerPanel.revalidate();
                 centerPanel.repaint();
             }
