@@ -216,6 +216,7 @@ public class MainFrame extends JFrame {
         //New reservation item
         menuItem = new JMenuItem("New Reservation...");
         menu.add(menuItem);
+        menuItem.addActionListener(new ReservationListener());
         menu.addSeparator();
 
         //Edit reservation item
@@ -338,5 +339,21 @@ public class MainFrame extends JFrame {
                 centerPanel.revalidate();
                 centerPanel.repaint();
             }
-        }}
+        }
+    }
+
+    class ReservationListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent select) {
+            JMenuItem menuItem = (JMenuItem) select.getSource();
+            String item = menuItem.getText();
+
+            if (item.equals("New Reservation...")){
+                setVisible(false);
+                new NewReservationFrame();
+            }
+
+        }
+    }
 }

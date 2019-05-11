@@ -57,8 +57,9 @@ public class NewReservationFrame extends JFrame {
 
     public NewReservationFrame(){
         createComponents();
-        this.setSize(1640, 140);
+        this.setSize(1400, 200);
         this.setTitle("New Reservation");
+        this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -86,7 +87,7 @@ public class NewReservationFrame extends JFrame {
         qDob = new JLabel("Day of Birth: ");
         dob = new JTextField("",10);
         qEmail = new JLabel("Email: ");
-        email = new JTextField();
+        email = new JTextField("",20);
 
         qCardName = new JLabel("Credit card name: ");
         cardName = new JTextField("",10);
