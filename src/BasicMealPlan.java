@@ -9,4 +9,13 @@ public class BasicMealPlan extends MealPlan {
         super.setNoOfSodas(3);
         super.setCost(65);
     }
+
+    @Override
+    public String toString() {
+        String description="➤ Included in meal:" +
+                "\n\t• "+getNoOfPizzas()+" XL 1 Topping Gourmet Pizzas" +
+                "\n\t• "+getNoOfSodas()+" 2L Soda Bottles" +
+                "➤ Cost: "+getCost();
+        return description;
+    }
 }

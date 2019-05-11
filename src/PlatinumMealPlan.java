@@ -17,4 +17,17 @@ public class PlatinumMealPlan extends MealPlan {
         this.wings = _wings;
         this.iceCream = _iceCream;
     }
+
+    @Override
+    public String toString() {
+        String description="➤ Included in meal:" +
+                "\n\t• "+getNoOfPizzas()+" XL 3 Topping Gourmet Pizzas\n" +
+                "\n\t• "+getNoOfSodas()+" 2L Soda Bottles\n" +
+                "\n\t• Salad\n" +
+                "\n\t• Bread-sticks\n" +
+                "\n\t• Choice of 2 chicken wing flavors. Pick bone-in or boneless." +
+                "\n\t• 2 Flavors of Ice cream (Chocolate, Vanilla, Strawberry)" +
+                "➤ Cost: "+getCost();
+        return description;
+    }
 }

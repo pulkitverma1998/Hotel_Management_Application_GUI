@@ -23,21 +23,21 @@ public class AquaWorldRoom extends AbstractRoom {
                 "\n\t• Olympic-sized pool with water slide" +
                 "\n\t• Kiddie pool" +
                 "\n\t• Large jacuzzi\n" +
-                "➤ Capacity: 75 people\n" +
-                "➤ Cost: $700/hr\n" +
+                "➤ Capacity: "+getCapacity()+"people\n" +
+                "➤ Cost: $"+getCost()+"/hr\n" +
                 "➤ Included in cost:" +
                 "\n\t• access to showers/lockers," +
                 "\n\t• life guards on duty" +
                 "\n\t•  DJ" +
                 "\n\t• table & chair set-up" +
-                "\n\t• Basic Meal Plan" +
+                "\n\t• Basic Meal Plan\n" +
                 "➤ Upgrades available:" +
                 "\n\t• upgrade meal plan for an additional cost\n\t  of $5×(new meal plan cost - basic meal plan cost)" +
                 "\n\t• towel rentals ($2 each)" +
                 "\n\t• party favors bag ($5 per bag)" +
                 "\n\t• projector ($10/hour)" +
                 "\n\t• party decorations & set-up (+$100)\n\t  - choose Hawaiian, Sea Life, Jungle, Space, or Modern Theme\n" +
-                "➤ Restrictions: To access water facilities, bathing suits must be worn at all times.";
+                "➤ Restrictions: "+getRestriction();
 
         return description;
     }

@@ -13,4 +13,15 @@ public class SilverMealPlan extends MealPlan {
         this.salad = "salad";
         this.breadSticks = "bread sticks";
     }
+
+    @Override
+    public String toString() {
+        String description="➤ Included in meal:" +
+                "\n\t• "+getNoOfPizzas()+" XL 2 Topping Gourmet Pizzas" +
+                "\n\t• "+getNoOfSodas()+" 2L Soda Bottles" +
+                "\n\t• Salad" +
+                "\n\t• bread-sticks" +
+                "➤  Cost: $"+getCost();
+        return description;
+    }
 }
