@@ -1,6 +1,3 @@
-//package gui;
-
-
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Font;
@@ -59,15 +56,30 @@ public class MainFrame extends JFrame {
         this.add(scrollPane, BorderLayout.CENTER);
     }
 
-    private void createMediumPartyRoomPanel() {
+    private void createRoomPanel(String roomName) {
         centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        JLabel panelTitle;
         //Title of default view
-        JLabel panelTitle = new JLabel("Medium Party Rooms");
-        panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 
-        centerPanel.add(panelTitle);
-        addARoomDescription(centerPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759" , "Medium Party Room" , aquaWorldRoom.toString());
+        if (roomName.equals("Medium Party Rooms")) {
+            panelTitle = new JLabel("Medium Party Rooms");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addARoomDescription(centerPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759" , "Medium Party Room" , mediumParty.toString());
+        } else if (roomName.equals("Small Party Rooms")) {
+            panelTitle = new JLabel("Small Party Rooms");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addARoomDescription(centerPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759" , "Small Party Room" , smallParty.toString());
+        } else if (roomName.equals("Aqua Room")) {
+            panelTitle = new JLabel("Aqua Room");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addARoomDescription(centerPanel, "https://media-cdn.tripadvisor.com/media/photo-s/0f/02/0c/1b/aqua-room.jpg", "Aqua Room" , aquaWorldRoom.toString());
+        } else if (roomName.equals("All")) {
+            createDefaultPanel();
+        }
         scrollPane = new JScrollPane(centerPanel);
         this.add(scrollPane, BorderLayout.CENTER);
         this.add(centerPanel);
@@ -101,7 +113,9 @@ public class MainFrame extends JFrame {
         submenu.add(menuItem);
 
         menuItem = new JMenuItem("Aqua Room");
+        menuItem.addActionListener(new RoomItemListener());
         submenu.add(menuItem);
+
         menu.add(submenu);
 
         //Lounges Sub Menu
@@ -181,8 +195,6 @@ public class MainFrame extends JFrame {
         this.add(menuBar, BorderLayout.NORTH);
     }
 
-
-
     /*
      * adds room image and description to a given container
      * @param container - the container onto which to add the new description
@@ -191,8 +203,8 @@ public class MainFrame extends JFrame {
      * @param roomDesc - the description of the room
      *
      * */
-    private void addARoomDescription(JPanel p, String imageURL, String roomName, String roomDesc) {
-        //JPanel p = new JPanel();
+    private void addARoomDescription(Container container, String imageURL, String roomName, String roomDesc) {
+        JPanel p = new JPanel();
 
         try {
             URL url = new URL(imageURL);
@@ -220,7 +232,7 @@ public class MainFrame extends JFrame {
 
         JButton bookButton = new JButton("Book Now");
         p.add(bookButton);
-        //container.add(p);
+        container.add(p);
     }
 
     class MealItemListener implements ActionListener {
@@ -244,10 +256,25 @@ public class MainFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent select) {
             JMenuItem item = (JMenuItem) select.getSource();
-
             if(item.getText().equals("Medium Party Rooms")) {
                 centerPanel.removeAll();
-                createMediumPartyRoomPanel();
+                createRoomPanel("Medium Party Rooms");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            } else if (item.getText().equals("Small Party Rooms")) {
+                centerPanel.removeAll();
+                createRoomPanel("Small Party Rooms");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            } else if (item.getText().equals("Aqua Room")) {
+                centerPanel.removeAll();
+                createRoomPanel("Aqua Room");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            } else if (item.getText().equals("All")) {
+                System.out.println("ALL");
+                centerPanel.removeAll();
+                createRoomPanel("All");
                 centerPanel.revalidate();
                 centerPanel.repaint();
             }
