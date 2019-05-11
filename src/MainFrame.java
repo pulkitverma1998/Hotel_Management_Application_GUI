@@ -57,7 +57,7 @@ public class MainFrame extends JFrame {
         panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 
         centerPanel.add(panelTitle);
-        addARoomDescription(centerPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759z" , "Small Party Room" , "Small Party Room");
+        addARoomDescription(centerPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759" , "Small Party Room" , aquaWorldRoom.toString());
         addARoomDescription(centerPanel, "https://s3.amazonaws.com/cmop_production/images/3590/inline/Classroom.jpg?1497985491","Medium Party Room", "Medium Party Room");
         addARoomDescription(centerPanel, "https://media-cdn.tripadvisor.com/media/photo-s/0f/02/0c/1b/aqua-room.jpg", "Aqua Room" , "Aqua World Room");
 
@@ -65,22 +65,19 @@ public class MainFrame extends JFrame {
         this.add(scrollPane, BorderLayout.CENTER);
     }
 
-//    public void createWorldPartyFrame() {
-//        centerPanel = new JPanel();
-//        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-//        //Title of default view
-//        JLabel panelTitle = new JLabel("Party World Rooms");
-//        panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
-//
-//        centerPanel.add(panelTitle);
-//        addARoomDescription(centerPanel, "https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759", "Small Party Room" , "Small Party Room");
-//        addARoomDescription(centerPanel, "https://s3.amazonaws.com/cmop_production/images/3590/inline/Classroom.jpg?1497985491","Medium Party Room", "Medium Party Room");
-//        addARoomDescription(centerPanel, "https://media-cdn.tripadvisor.com/media/photo-s/0f/02/0c/1b/aqua-room.jpg", "Aqua Room" , "Aqua World Room");
-//
-//        scrollPane = new JScrollPane(centerPanel);
-//        this.add(scrollPane, BorderLayout.CENTER);
-//
-//    }
+    private void createMediumPartyRoomPanel() {
+        JPanel mediumPartyRoomPanel = new JPanel();
+        mediumPartyRoomPanel.setLayout(new BoxLayout(mediumPartyRoomPanel, BoxLayout.Y_AXIS));
+        //Title of default view
+        JLabel panelTitle = new JLabel("Medium Party Rooms");
+        panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+
+        mediumPartyRoomPanel.add(panelTitle);
+        addARoomDescription(mediumPartyRoomPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759" , "Medium Party Room" , aquaWorldRoom.toString());
+        scrollPane = new JScrollPane(mediumPartyRoomPanel);
+        this.add(scrollPane, BorderLayout.CENTER);
+        this.add(mediumPartyRoomPanel);
+    }
 
     /* initializes menu bar items and adds them to this window*/
     private void createMenuBar() {
@@ -256,7 +253,11 @@ public class MainFrame extends JFrame {
         public void actionPerformed(ActionEvent select) {
             JMenuItem item = (JMenuItem) select.getSource();
 
-            if(item.getText().equals("Medium Party Rooms")) System.out.println("Display only Medium Party Room");
-
+            if(item.getText().equals("Medium Party Rooms")) {
+                centerPanel.removeAll();
+                createMediumPartyRoomPanel();
+                revalidate();
+                repaint();
+            }
         }}
 }
