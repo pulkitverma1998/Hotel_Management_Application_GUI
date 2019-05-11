@@ -272,7 +272,6 @@ public class MainFrame extends JFrame {
                 centerPanel.revalidate();
                 centerPanel.repaint();
             } else if (item.getText().equals("All")) {
-                System.out.println("ALL");
                 centerPanel.removeAll();
                 createRoomPanel("All");
                 centerPanel.revalidate();
