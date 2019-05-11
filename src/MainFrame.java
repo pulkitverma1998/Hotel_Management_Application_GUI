@@ -241,8 +241,6 @@ public class MainFrame extends JFrame {
             }
             else if(item.equals("Basic")) System.out.println("VIEW BASIC"); //replace
             else if(item.equals("Bronze")) System.out.println("VIEW BRONZE");
-
-
         }
 
     }
@@ -256,7 +254,7 @@ public class MainFrame extends JFrame {
             if(item.getText().equals("Medium Party Rooms")) {
                 centerPanel.removeAll();
                 createMediumPartyRoomPanel();
-                revalidate();
+                validate();
                 repaint();
             }
         }}
