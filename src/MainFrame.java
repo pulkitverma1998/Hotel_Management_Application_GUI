@@ -64,9 +64,9 @@ public class MainFrame extends JFrame {
         panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 
         centerPanel.add(panelTitle);
-        addARoomDescription(centerPanel, "https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759", "Small Party Room" , "Small Party Room");
-        addARoomDescription(centerPanel, "https://s3.amazonaws.com/cmop_production/images/3590/inline/Classroom.jpg?1497985491","Medium Party Room", "Medium Party Room");
-        addARoomDescription(centerPanel, "https://media-cdn.tripadvisor.com/media/photo-s/0f/02/0c/1b/aqua-room.jpg", "Aqua Room" , "Aqua World Room");
+        addARoomDescription(centerPanel, "C:\\Users\\Diego\\Documents\\CECS_277_Final_Exam\\images\\small.jpg", "Small Party Room" , "Small Party Room");
+        addARoomDescription(centerPanel, "C:\\Users\\Diego\\Documents\\CECS_277_Final_Exam\\images\\medium.jpg","Medium Party Room", "Medium Party Room");
+        addARoomDescription(centerPanel, "C:\\Users\\Diego\\Documents\\CECS_277_Final_Exam\\images\\aquaworld.jpg", "Aqua Room" , "Aqua World Room");
 
         scrollPane = new JScrollPane(centerPanel);
         this.add(scrollPane, BorderLayout.CENTER);
@@ -255,8 +255,8 @@ public class MainFrame extends JFrame {
 
         }}
 
-    public static void main(String[] args
-    ) {
-        MainFrame f = new MainFrame();
-    }
+    //public static void main(String[] args
+    //) {
+    //    MainFrame f = new MainFrame();
+    //}
 }

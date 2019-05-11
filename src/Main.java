@@ -39,6 +39,8 @@ public class Main {
         //System.out.println(basicMealPlan.toString());
         MainFrame mainFrame = new MainFrame();
 
+       DateSpinner.createAndShowGUI();
+
 
     }
 }
