@@ -12,4 +12,15 @@ public class KaraokeLoungeRoom extends AbstractRoom{
         setCost(30);
         setIncludedInCost(included);
     }
+
+    @Override
+    public String toString() {
+        String description="➤ Number of Rooms: 10\n" +
+                "➤ Description: Enclosed lounge with karaoke machine\n" +
+                "➤ Capacity: 10 people \n" +
+                "➤ Cost: $30/hr\n" +
+                "➤ Included in cost: access to karaoke machine\n" +
+                "➤ Upgrades available: add a meal plan";
+        return description;
+    }
 }

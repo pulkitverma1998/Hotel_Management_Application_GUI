@@ -18,25 +18,25 @@ public class AquaWorldRoom extends AbstractRoom {
 
     @Override
     public String toString() {
-        String description = "➤ Number of Rooms: 1\n\n" +
+        String description = "➤ Number of Rooms: 1\n" +
                 "➤ Description:" +
-                "\n\t\t\t• Olympic-sized pool with water slide" +
-                "\n\t\t\t• Kiddie pool" +
-                "\n\t\t\t• Large jacuzzi\n\n" +
-                "➤ Capacity: 75 people\n\n" +
-                "➤ Cost: $700/hr\n\n" +
+                "\n\t• Olympic-sized pool with water slide" +
+                "\n\t• Kiddie pool" +
+                "\n\t• Large jacuzzi\n" +
+                "➤ Capacity: 75 people\n" +
+                "➤ Cost: $700/hr\n" +
                 "➤ Included in cost:" +
-                "\n\t\t\t• access to showers/lockers," +
-                "\n\t\t\t• life guards on duty" +
-                "\n\t\t\t•  DJ" +
-                "\n\t\t\t• table & chair set-up" +
-                "\n\t\t\t• Basic Meal Plan\n\n" +
-                "➤ Upgrades available:\n" +
-                "\n\t\t\t• upgrade meal plan for an additional cost of $5×(new meal plan cost - basic meal plan cost)" +
-                "\n\t\t\t• towel rentals ($2 each)\n" +
-                "\n\t\t\t• party favors bag ($5 per bag),\n" +
-                "\n\t\t\t• projector ($10/hour),\n" +
-                "\n\t\t\t• party decorations & set-up (+$100) - choose Hawaiian, Sea Life, Jungle, Space, or Modern Theme\n\n" +
+                "\n\t• access to showers/lockers," +
+                "\n\t• life guards on duty" +
+                "\n\t•  DJ" +
+                "\n\t• table & chair set-up" +
+                "\n\t• Basic Meal Plan" +
+                "➤ Upgrades available:" +
+                "\n\t• upgrade meal plan for an additional cost\n\t  of $5×(new meal plan cost - basic meal plan cost)" +
+                "\n\t• towel rentals ($2 each)" +
+                "\n\t• party favors bag ($5 per bag)" +
+                "\n\t• projector ($10/hour)" +
+                "\n\t• party decorations & set-up (+$100)\n\t  - choose Hawaiian, Sea Life, Jungle, Space, or Modern Theme\n" +
                 "➤ Restrictions: To access water facilities, bathing suits must be worn at all times.";
 
         return description;
