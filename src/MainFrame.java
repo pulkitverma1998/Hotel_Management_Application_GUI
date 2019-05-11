@@ -10,18 +10,12 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import java.net.URL;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+
+import javax.swing.*;
 import javax.swing.border.Border;
 
 //import backend.AquaRoom;
@@ -64,7 +58,7 @@ public class MainFrame extends JFrame {
         panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 
         centerPanel.add(panelTitle);
-        addARoomDescription(centerPanel, "https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759", "Small Party Room" , "Small Party Room");
+        addARoomDescription(centerPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759z" , "Small Party Room" , "Small Party Room");
         addARoomDescription(centerPanel, "https://s3.amazonaws.com/cmop_production/images/3590/inline/Classroom.jpg?1497985491","Medium Party Room", "Medium Party Room");
         addARoomDescription(centerPanel, "https://media-cdn.tripadvisor.com/media/photo-s/0f/02/0c/1b/aqua-room.jpg", "Aqua Room" , "Aqua World Room");
 
