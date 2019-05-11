@@ -9,12 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
-
-import java.net.URL;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -66,17 +60,17 @@ public class MainFrame extends JFrame {
     }
 
     private void createMediumPartyRoomPanel() {
-        JPanel mediumPartyRoomPanel = new JPanel();
-        mediumPartyRoomPanel.setLayout(new BoxLayout(mediumPartyRoomPanel, BoxLayout.Y_AXIS));
+        centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
         //Title of default view
         JLabel panelTitle = new JLabel("Medium Party Rooms");
         panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 
-        mediumPartyRoomPanel.add(panelTitle);
-        addARoomDescription(mediumPartyRoomPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759" , "Medium Party Room" , aquaWorldRoom.toString());
-        scrollPane = new JScrollPane(mediumPartyRoomPanel);
+        centerPanel.add(panelTitle);
+        addARoomDescription(centerPanel,"https://s3.amazonaws.com/cmop_production/images/3582/inline/INLINE_Birthday_Small_Party_Rm.jpg?1497465759" , "Medium Party Room" , aquaWorldRoom.toString());
+        scrollPane = new JScrollPane(centerPanel);
         this.add(scrollPane, BorderLayout.CENTER);
-        this.add(mediumPartyRoomPanel);
+        this.add(centerPanel);
     }
 
     /* initializes menu bar items and adds them to this window*/
@@ -197,8 +191,8 @@ public class MainFrame extends JFrame {
      * @param roomDesc - the description of the room
      *
      * */
-    private void addARoomDescription(Container container, String imageURL, String roomName, String roomDesc) {
-        JPanel p = new JPanel();
+    private void addARoomDescription(JPanel p, String imageURL, String roomName, String roomDesc) {
+        //JPanel p = new JPanel();
 
         try {
             URL url = new URL(imageURL);
@@ -226,7 +220,7 @@ public class MainFrame extends JFrame {
 
         JButton bookButton = new JButton("Book Now");
         p.add(bookButton);
-        container.add(p);
+        //container.add(p);
     }
 
     class MealItemListener implements ActionListener {
@@ -254,8 +248,8 @@ public class MainFrame extends JFrame {
             if(item.getText().equals("Medium Party Rooms")) {
                 centerPanel.removeAll();
                 createMediumPartyRoomPanel();
-                validate();
-                repaint();
+                centerPanel.revalidate();
+                centerPanel.repaint();
             }
         }}
 }
