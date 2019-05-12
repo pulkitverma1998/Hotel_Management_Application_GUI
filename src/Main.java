@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Guest ajay = new Guest("Ajay", "7142320342", "ajay@yahoo.com", "3432498594839485");
-        Guest pulkit = new Guest("Pulkit", "743823243", "pulkit@yahoo.com", "43534234234234");
+        //Guest ajay = new Guest("Ajay", "7142320342", "ajay@yahoo.com", "3432498594839485");
+        //Guest pulkit = new Guest("Pulkit", "743823243", "pulkit@yahoo.com", "43534234234234");
 
 
 
@@ -24,8 +24,8 @@ public class Main {
         System.out.println(mediumParty.getDescription());
         System.out.println(aquaWorldRoom.getDescription());
 
-        smallParty.attach(ajay);
-        mediumParty.attach(pulkit);
+       // smallParty.attach(ajay);
+        // mediumParty.attach(pulkit);
         smallParty.Notify();
         mediumParty.Notify();
 
