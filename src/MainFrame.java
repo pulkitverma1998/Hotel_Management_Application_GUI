@@ -1,11 +1,11 @@
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -24,7 +24,11 @@ public class MainFrame extends JFrame {
     AbstractRoom aquaWorldRoom = aRoom.createAbstractRoom(RoomType.AQUAWORLD_ROOM);
     AbstractRoom karaokeLounge = aRoom.createAbstractRoom(RoomType.KARAOKE_LOUNGE_ROOM);
     AbstractRoom billiardLounge = aRoom.createAbstractRoom(RoomType.ADULT_BILLIARDS_LOUNGE_ROOM);
-    //MealPlan basicMealPlan = new BasicMealPlan();
+    MealPlan basicMealPlan = new BasicMealPlan();
+    MealPlan bronzeMealPlan = new BronzeMealPlan();
+    MealPlan silverMealPlan = new SilverMealPlan();
+    MealPlan goldMealPlan = new GoldMealPlan();
+    MealPlan platinumMealPlan = new PlatinumMealPlan();
 
     //border settings used in the method addARoomDescription()
     Border raisedbevel = BorderFactory.createRaisedBevelBorder();
@@ -74,25 +78,23 @@ public class MainFrame extends JFrame {
         this.add(scrollPane, BorderLayout.CENTER);
     }
 
-//    private void createDefaultMealPanel(){
-//        centerPanel = new JPanel();
-//        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-//        //Title of default view
-//        JLabel panelTitle = new JLabel("Meal Plans");
-//        panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
-//
-//        centerPanel.add(panelTitle);
-//        addARoomDescription(centerPanel,"https://mypizzaiole.com/wp-content/uploads/2017/11/6_hotwings-500x500-3.png" , "Basic Meal PLan" , billiardLounge.toString());
-//        addARoomDescription(centerPanel,"https://i.pinimg.com/originals/72/09/5a/72095a891b78e44b2bb87f420d99006e.png" , "Bronze Meal PLan" , billiardLounge.toString());
-//        addARoomDescription(centerPanel,"https://premier-pizza.com/pic4/specialsqb.jpg" , "Silver Meal PLan" , billiardLounge.toString());
-//        addARoomDescription(centerPanel,"https://static1.squarespace.com/static/5a4fc9a0a803bbc5dbd3a234/t/5c37be8f8a922d304f0cceb1/1547157156943/Interactive-Spread-w-Pop-Filter-fb-cover.jpg?format=1500w" , "Gold Meal PLan" , billiardLounge.toString());
-//        addARoomDescription(centerPanel,"https://chefsatmassines.store/wp-content/uploads/2018/10/pizza-party-two.jpg" , "Platinum Meal PLan" , billiardLounge.toString());
-//
-//        scrollPane = new JScrollPane(centerPanel);
-//        this.add(scrollPane, BorderLayout.CENTER);
-//    }
+    private void createDefaultMealPanel(){
+        centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        //Title of default view
+        JLabel panelTitle = new JLabel("Meal Plans");
+        panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 
+        centerPanel.add(panelTitle);
+        addAMealDescription(centerPanel , "Basic Meal Plan" , basicMealPlan.toString());
+        addAMealDescription(centerPanel, "Bronze Meal Plan" , bronzeMealPlan.toString());
+        addAMealDescription(centerPanel, "Silver Meal Plan" , silverMealPlan.toString());
+        addAMealDescription(centerPanel , "Gold Meal Plan" , goldMealPlan.toString());
+        addAMealDescription(centerPanel , "Platinum Meal Plan" , platinumMealPlan.toString());
 
+        scrollPane = new JScrollPane(centerPanel);
+        this.add(scrollPane, BorderLayout.CENTER);
+    }
 
     private void createRoomPanel(String roomName) {
         centerPanel = new JPanel();
@@ -147,18 +149,48 @@ public class MainFrame extends JFrame {
         this.add(centerPanel);
     }
 
-//    private void createMeal(String mealName){
-//        centerPanel = new JPanel();
-//        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-//        JLabel panelTitle;
-//
-//        if (mealName.equals("All Meals")){
-//            panelTitle=new JLabel("All Meals");
-//            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
-//            centerPanel.add(panelTitle);
-//
-//        }
-//    }
+    private void createMeal(String mealName){
+        centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        JLabel panelTitle;
+
+        if (mealName.equals("All Meals")){
+            createDefaultMealPanel();
+        }else if (mealName.equals("Basic Meal Plan")){
+            System.out.println("hello");
+            panelTitle = new JLabel("Basic Meal Plan");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addAMealDescription(centerPanel, "Basic Meal Plan" , basicMealPlan.toString());
+        }else if (mealName.equals("Bronze Meal Plan")){
+            panelTitle = new JLabel("Bronze Meal Plan");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addAMealDescription(centerPanel, "Bronze Meal Plan" , bronzeMealPlan.toString());
+
+        }else if (mealName.equals("Silver Meal Plan")){
+            panelTitle = new JLabel("Silver Meal Plan");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addAMealDescription(centerPanel, "Silver Meal Plan" , silverMealPlan.toString());
+
+        }else if (mealName.equals("Gold Meal Plan")){
+            panelTitle = new JLabel("Gold Meal Plan");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addAMealDescription(centerPanel, "Gold Meal Plan" , goldMealPlan.toString());
+
+        }else if (mealName.equals("Platinum Meal Plan")){
+            panelTitle = new JLabel("Platinum Meal Plan");
+            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+            centerPanel.add(panelTitle);
+            addAMealDescription(centerPanel, "Platinum Meal Plan" , platinumMealPlan.toString());
+
+        }
+        scrollPane = new JScrollPane(centerPanel);
+        this.add(scrollPane, BorderLayout.CENTER);
+        this.add(centerPanel);
+    }
 
     /* initializes menu bar items and adds them to this window*/
     private void createMenuBar() {
@@ -218,23 +250,23 @@ public class MainFrame extends JFrame {
         submenu.add(menuItem);
         menuItem.addActionListener(new MealItemListener());
 
-        menuItem = new JMenuItem("Basic");
+        menuItem = new JMenuItem("Basic Meal Plan");
         submenu.add(menuItem);
         menuItem.addActionListener(new MealItemListener());
 
-        menuItem = new JMenuItem("Bronze");
+        menuItem = new JMenuItem("Bronze Meal Plan");
         submenu.add(menuItem);
         menuItem.addActionListener(new MealItemListener());
 
-        menuItem = new JMenuItem("Silver");
+        menuItem = new JMenuItem("Silver Meal Plan");
         submenu.add(menuItem);
         menuItem.addActionListener(new MealItemListener());
 
-        menuItem = new JMenuItem("Gold");
+        menuItem = new JMenuItem("Gold Meal Plan");
         submenu.add(menuItem);
         menuItem.addActionListener(new MealItemListener());
 
-        menuItem = new JMenuItem("Platinum");
+        menuItem = new JMenuItem("Platinum Meal Plan");
         submenu.add(menuItem);
         menuItem.addActionListener(new MealItemListener());
 
@@ -285,11 +317,15 @@ public class MainFrame extends JFrame {
     private void addARoomDescription(Container container, String imageURL, String roomName, String roomDesc) {
         JPanel p = new JPanel();
 
+        BufferedImage img = null;
+
         try {
             URL url = new URL(imageURL);
-            ImageIcon icon = new ImageIcon(url);
+            img = ImageIO.read(url);
+            Image dimg = img.getScaledInstance(270 , 300, Image.SCALE_FAST);
+            ImageIcon icon = new ImageIcon(dimg);
             JLabel picture = new JLabel(roomName, icon, JLabel.CENTER);
-            picture.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+            picture.setFont(new Font(Font.SERIF, Font.BOLD, 15));
 
             //Set the position of the text, relative to the icon:
             picture.setVerticalTextPosition(JLabel.TOP);
@@ -305,7 +341,7 @@ public class MainFrame extends JFrame {
         JTextArea description = new JTextArea(5,10);
         description.append(roomDesc);
         description.setEditable(false);
-        description.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
+        description.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
         description.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
         p.add(description);
 
@@ -314,18 +350,62 @@ public class MainFrame extends JFrame {
         container.add(p);
     }
 
+    private void addAMealDescription(Container container, String nameMeal, String roomDesc){
+        JPanel p = new JPanel();
+        JTextArea description = new JTextArea(5,10);
+        JLabel nameOfMeal =new JLabel(nameMeal);
+        nameOfMeal.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+        p.add(nameOfMeal);
+        description.append(roomDesc);
+        description.setEditable(false);
+        description.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
+        description.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
+        p.add(description);
+        container.add(p);
+    }
+
     class MealItemListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent click) {
-            JMenuItem menuItem = (JMenuItem) click.getSource();
-            String item = menuItem.getText();
-            System.out.println(item);
-            if(item.equals("All Meals")) {
-                System.out.println("VIEW ALL"); //replace
+            JMenuItem item = (JMenuItem) click.getSource();
+            if(item.getText().equals("All Meals")) {
+                centerPanel.removeAll();
+                createMeal("All Meals");
+                centerPanel.revalidate();
+                centerPanel.repaint();
             }
-            else if(item.equals("Basic")) System.out.println("VIEW BASIC"); //replace
-            else if(item.equals("Bronze")) System.out.println("VIEW BRONZE");
+            else if(item.getText().equals("Basic Meal Plan")){
+                System.out.println("inside");
+                centerPanel.removeAll();
+                createMeal("Basic Meal Plan");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            }
+            else if(item.getText().equals("Bronze Meal Plan")){
+                centerPanel.removeAll();
+                createMeal("Bronze Meal Plan");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            }
+            else if(item.getText().equals("Silver Meal Plan")){
+                centerPanel.removeAll();
+                createMeal("Silver Meal Plan");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            }
+            else if(item.getText().equals("Gold Meal Plan")){
+                centerPanel.removeAll();
+                createMeal("Gold Meal Plan");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            }
+            else if(item.getText().equals("Platinum Meal Plan")){
+                centerPanel.removeAll();
+                createMeal("Platinum Meal Plan");
+                centerPanel.revalidate();
+                centerPanel.repaint();
+            }
         }
 
     }
