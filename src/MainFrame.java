@@ -24,6 +24,7 @@ public class MainFrame extends JFrame {
     AbstractRoom aquaWorldRoom = aRoom.createAbstractRoom(RoomType.AQUAWORLD_ROOM);
     AbstractRoom karaokeLounge = aRoom.createAbstractRoom(RoomType.KARAOKE_LOUNGE_ROOM);
     AbstractRoom billiardLounge = aRoom.createAbstractRoom(RoomType.ADULT_BILLIARDS_LOUNGE_ROOM);
+    //MealPlan basicMealPlan = new BasicMealPlan();
 
     //border settings used in the method addARoomDescription()
     Border raisedbevel = BorderFactory.createRaisedBevelBorder();
@@ -72,6 +73,24 @@ public class MainFrame extends JFrame {
         scrollPane = new JScrollPane(centerPanel);
         this.add(scrollPane, BorderLayout.CENTER);
     }
+
+//    private void createDefaultMealPanel(){
+//        centerPanel = new JPanel();
+//        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+//        //Title of default view
+//        JLabel panelTitle = new JLabel("Meal Plans");
+//        panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+//
+//        centerPanel.add(panelTitle);
+//        addARoomDescription(centerPanel,"https://mypizzaiole.com/wp-content/uploads/2017/11/6_hotwings-500x500-3.png" , "Basic Meal PLan" , billiardLounge.toString());
+//        addARoomDescription(centerPanel,"https://i.pinimg.com/originals/72/09/5a/72095a891b78e44b2bb87f420d99006e.png" , "Bronze Meal PLan" , billiardLounge.toString());
+//        addARoomDescription(centerPanel,"https://premier-pizza.com/pic4/specialsqb.jpg" , "Silver Meal PLan" , billiardLounge.toString());
+//        addARoomDescription(centerPanel,"https://static1.squarespace.com/static/5a4fc9a0a803bbc5dbd3a234/t/5c37be8f8a922d304f0cceb1/1547157156943/Interactive-Spread-w-Pop-Filter-fb-cover.jpg?format=1500w" , "Gold Meal PLan" , billiardLounge.toString());
+//        addARoomDescription(centerPanel,"https://chefsatmassines.store/wp-content/uploads/2018/10/pizza-party-two.jpg" , "Platinum Meal PLan" , billiardLounge.toString());
+//
+//        scrollPane = new JScrollPane(centerPanel);
+//        this.add(scrollPane, BorderLayout.CENTER);
+//    }
 
 
 
@@ -128,6 +147,19 @@ public class MainFrame extends JFrame {
         this.add(centerPanel);
     }
 
+//    private void createMeal(String mealName){
+//        centerPanel = new JPanel();
+//        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+//        JLabel panelTitle;
+//
+//        if (mealName.equals("All Meals")){
+//            panelTitle=new JLabel("All Meals");
+//            panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+//            centerPanel.add(panelTitle);
+//
+//        }
+//    }
+
     /* initializes menu bar items and adds them to this window*/
     private void createMenuBar() {
         menuBar = new JMenuBar();
@@ -182,7 +214,7 @@ public class MainFrame extends JFrame {
         //Meal Plans Sub Menu
         submenu = new JMenu("Meal Plans");
 
-        menuItem = new JMenuItem("All");
+        menuItem = new JMenuItem("All Meals");
         submenu.add(menuItem);
         menuItem.addActionListener(new MealItemListener());
 
@@ -289,7 +321,7 @@ public class MainFrame extends JFrame {
             JMenuItem menuItem = (JMenuItem) click.getSource();
             String item = menuItem.getText();
             System.out.println(item);
-            if(item.equals("All")) {
+            if(item.equals("All Meals")) {
                 System.out.println("VIEW ALL"); //replace
             }
             else if(item.equals("Basic")) System.out.println("VIEW BASIC"); //replace
