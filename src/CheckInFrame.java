@@ -63,33 +63,35 @@ public class CheckInFrame extends JFrame{
 
     }
 
+    class CheckInListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
 
 
-}
-class CheckInListener implements ActionListener
-{
-
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
+        }
 
 
     }
 
+    class CancelListener implements ActionListener
+    {
 
-}
-class CancelListener implements ActionListener
-{
+        @Override
+        public void actionPerformed(ActionEvent click) {
 
-    @Override
-    public void actionPerformed(ActionEvent click) {
+            Component b = (Component) click.getSource()  ;
 
-        Component b = (Component) click.getSource()  ;
+            JFrame c = (JFrame) SwingUtilities.getRoot(b);
 
-        JFrame c = (JFrame) SwingUtilities.getRoot(b);
+            c.setVisible(false);
+        }
 
-        c.setVisible(false);
+
     }
 
-
 }
+
+
 
