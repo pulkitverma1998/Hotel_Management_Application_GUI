@@ -19,6 +19,7 @@ public class PlatinumMealPlan extends MealPlan {
     }
 
     public PlatinumMealPlan(){
+        super();
         super.setNoOfPizzas(4);
         super.setNoOfSodas(5);
         super.setCost(150);
@@ -33,7 +34,7 @@ public class PlatinumMealPlan extends MealPlan {
                 "\n\t• Bread-sticks" +
                 "\n\t• Choice of 2 chicken wing flavors. Pick bone-in or boneless." +
                 "\n\t• 2 Flavors of Ice cream (Chocolate, Vanilla, Strawberry)\n" +
-                "➤ Cost: $"+super.getCost()+"";
+                "➤ Cost: $"+getCost()+"";
         return description;
     }
 }

@@ -16,7 +16,9 @@ public class MealPlan extends AbstractRoom {
     }
 
     public MealPlan() {
-
+        noOfPizzas = 0;
+        noOfSodas = 0;
+        cost = 0.0;
     }
 
     public int getNoOfPizzas() {

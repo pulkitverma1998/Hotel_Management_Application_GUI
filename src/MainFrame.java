@@ -350,12 +350,15 @@ public class MainFrame extends JFrame {
         container.add(p);
     }
 
-    private void addAMealDescription(Container container, String roomName, String roomDesc){
+    private void addAMealDescription(Container container, String nameMeal, String roomDesc){
         JPanel p = new JPanel();
         JTextArea description = new JTextArea(5,10);
+        JLabel nameOfMeal =new JLabel(nameMeal);
+        nameOfMeal.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+        p.add(nameOfMeal);
         description.append(roomDesc);
         description.setEditable(false);
-        description.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
+        description.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
         description.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
         p.add(description);
         container.add(p);

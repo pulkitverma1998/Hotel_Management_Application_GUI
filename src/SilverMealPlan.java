@@ -15,6 +15,7 @@ public class SilverMealPlan extends MealPlan {
     }
 
     public SilverMealPlan(){
+        super();
         super.setNoOfPizzas(3);
         super.setNoOfSodas(5);
         super.setCost(90);
@@ -27,7 +28,7 @@ public class SilverMealPlan extends MealPlan {
                 "\n\t• "+getNoOfSodas()+" 2L Soda Bottles" +
                 "\n\t• Salad" +
                 "\n\t• bread-sticks\n" +
-                "➤  Cost: $"+super.getCost()+"";
+                "➤  Cost: $"+getCost()+"";
         return description;
     }
 }

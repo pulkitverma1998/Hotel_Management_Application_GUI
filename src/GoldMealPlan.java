@@ -18,6 +18,7 @@ public class GoldMealPlan extends MealPlan {
     }
 
     public GoldMealPlan(){
+        super();
         super.setNoOfPizzas(3);
         super.setNoOfSodas(5);
         super.setCost(120);
@@ -32,7 +33,7 @@ public class GoldMealPlan extends MealPlan {
                 "\n\t• Bread-sticks" +
                 "\n\t• Choice of 2 chicken wing flavors " +
                 "\n\t(Spicy mild,Lemon-pepper, BBQ, Sesame, or Diablo).\n\t Pick bone-in or boneless.\n" +
-                "➤ Cost: $"+super.getCost()+"";
+                "➤ Cost: $"+getCost()+"";
         return description;
     }
 }

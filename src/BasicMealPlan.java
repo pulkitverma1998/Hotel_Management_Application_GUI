@@ -11,6 +11,7 @@ public class BasicMealPlan extends MealPlan {
     }
 
     public BasicMealPlan(){
+        super();
         super.setNoOfPizzas(3);
         super.setNoOfSodas(3);
         super.setCost(65);
@@ -21,7 +22,7 @@ public class BasicMealPlan extends MealPlan {
         String description="➤ Included in meal:" +
                 "\n\t• "+getNoOfPizzas()+" XL 1 Topping Gourmet Pizzas" +
                 "\n\t• "+getNoOfSodas()+" 2L Soda Bottles\n" +
-                "➤ Cost: $"+super.getCost()+"";
+                "➤ Cost: $"+getCost()+"";
         return description;
     }
 }
