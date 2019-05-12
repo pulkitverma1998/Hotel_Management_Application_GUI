@@ -18,6 +18,7 @@ public class CheckOutFrame extends JFrame{
         createComponents() ;
         this.setTitle("Check-Out Frame");
         this.setSize(450, 600);
+        this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }

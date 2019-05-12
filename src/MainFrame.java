@@ -294,9 +294,11 @@ public class MainFrame extends JFrame {
 
         menuItem = new JMenuItem("Check-in");
         submenu.add(menuItem);
+        menuItem.addActionListener(new ReservationListener());
 
         menuItem = new JMenuItem("Check-out");
         submenu.add(menuItem);
+        menuItem.addActionListener(new ReservationListener());
 
 
         menu.add(submenu);
@@ -464,6 +466,14 @@ public class MainFrame extends JFrame {
             if (item.equals("New Reservation...")){
                 setVisible(false);
                 new NewReservationFrame();
+            }else if (item.equals("Edit Existing Reservation...")){
+
+            }else if (item.equals("Check-in")){
+                setVisible(false);
+                new CheckInFrame();
+            }else if (item.equals("Check-out")){
+                setVisible(false);
+                new CheckOutFrame();
             }
 
         }

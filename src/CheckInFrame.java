@@ -34,6 +34,7 @@ public class CheckInFrame extends JFrame{
         createComponents() ;
         this.setTitle("Guest Check-In");
         this.setSize(450, 600);
+        this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         listing = new String[5] ;
