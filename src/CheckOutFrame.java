@@ -26,6 +26,7 @@ public class CheckOutFrame extends JFrame{
         this.checkOutButton = new JButton("Guest Check-Out");
         this.cancelButton = new JButton("Cancel");
 
+
         ActionListener checkOutListener = new CheckOutListener() ;
         checkOutButton.addActionListener(checkOutListener );
 
