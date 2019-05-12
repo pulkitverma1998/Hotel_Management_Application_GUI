@@ -54,6 +54,15 @@ public class NewReservationFrame extends JFrame {
     private JComboBox sodaChoices;
     private JComboBox iceCream;
 
+    protected DateSpinner newDateSpinner = new DateSpinner();
+    protected TimeSpinner newTimeSpinner = new TimeSpinner();
+    private String monthValue;
+    private String dayValue;
+    private String yearValue;
+    private String hourValue;
+    private String minuteValue;
+
+
     private JButton saveButton;
     private JButton cancelButton;
 
@@ -63,6 +72,7 @@ public class NewReservationFrame extends JFrame {
     private List<String> selectedContact = new ArrayList<>();
 
     ArrayList<String> aDates = new ArrayList<>();
+    ArrayList<String> aTimes = new ArrayList<>();
 
 
     public NewReservationFrame(){
@@ -129,20 +139,14 @@ public class NewReservationFrame extends JFrame {
         cancelButton = new JButton("Cancel");
         saveButton = new JButton("Save");
 
-        DateSpinner newDateSpinner = new DateSpinner();
-        String monthValue = newDateSpinner.getTextField(newDateSpinner.aSpinner).getText();
-        String dayValue = newDateSpinner.getTextField(newDateSpinner.bSpinner).getText();
-        String yearValue = newDateSpinner.getTextField(newDateSpinner.cSpinner).getText();
-        aDates.add(monthValue);
-        aDates.add(dayValue);
-        aDates.add(yearValue);
 
-    /*    ActionListener saveListener = new saveButtonListener();
+        ActionListener saveListener = new saveButtonListener();
         saveButton.addActionListener(saveListener);
         ActionListener cancelListener = new cancelButtonListener();
-        cancelButton.addActionListener(cancelListener);*/
+        cancelButton.addActionListener(cancelListener);
 
         panel.add(newDateSpinner);
+        panel.add(newTimeSpinner);
         panel.add(roomTypes);
         panel.add(mealPlans);
         panel.add(toppingsPizza);
@@ -185,7 +189,21 @@ public class NewReservationFrame extends JFrame {
     class saveButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent click) {
-            Reservation aReservation = new Reservation((String) mealPlans.getSelectedItem(), aDates);
+            aDates.clear();
+            aTimes.clear();
+
+            monthValue = newDateSpinner.getTextField(newDateSpinner.aSpinner).getText();
+            dayValue = newDateSpinner.getTextField(newDateSpinner.bSpinner).getText();
+            yearValue = newDateSpinner.getTextField(newDateSpinner.cSpinner).getText();
+            aDates.add(monthValue);
+            aDates.add(dayValue);
+            aDates.add(yearValue);
+            hourValue = newTimeSpinner.getTextField(newTimeSpinner.aSpinner).getText();
+            minuteValue = newTimeSpinner.getTextField(newTimeSpinner.bSpinner).getText();
+            aTimes.add(hourValue);
+            aTimes.add(minuteValue);
+
+            Reservation aReservation = new Reservation((String) mealPlans.getSelectedItem(), aDates, aTimes);
             Guest aGuest = new Guest((String) name.getText(), (String) phone.getText(), (String) email.getText(), (String) cardName.getText(), (String) cardNum.getText(), cardSec.getText(), cardExp.getText(), aReservation);
             selectedCards.clear();
             for(int i = 0; i < cardBoxes.size(); i++){
@@ -199,6 +217,9 @@ public class NewReservationFrame extends JFrame {
                     aGuest.setContact(contactBoxes.get(i).getText());
                 }
             }
+            System.out.println(aGuest.getCardName());
+            System.out.println(aGuest.getaReservation().getDate());
+            System.out.println(aGuest.getaReservation().getTime());
 /*            dispose();
             boolean selectedTwo = heated.isSelected();
             PastryItem newPItem = new PastryItem(selected, (String)endFlavor.getSelectedItem(), selectedTwo);
@@ -209,12 +230,12 @@ public class NewReservationFrame extends JFrame {
         }
     }
 
-/*    class cancelButtonListener implements ActionListener {
+  class cancelButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent click) {
-            new ItemPurchaseFrame(false, true);
+            //new ItemPurchaseFrame(false, true);
             dispose();
         }
-    }*/
+    }
 
 }

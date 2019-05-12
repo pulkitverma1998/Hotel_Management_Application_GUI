@@ -7,11 +7,13 @@ public class Reservation {
     String date;
     String time;
     ArrayList<String> dates = new ArrayList<>();
+    ArrayList<String> times = new ArrayList<>();
     AbstractRoom reservedRoom;
 
 
-    Reservation(String mealPlan, ArrayList<String> dates){
+    Reservation(String mealPlan, ArrayList<String> dates, ArrayList<String> times){
         this.dates = dates;
+        this.times = times;
         this.mealPlan = mealPlan;
         //this.upgrades = upgrades;
         //this.specialInstructions = specialInstructions;
@@ -37,21 +39,15 @@ public class Reservation {
         this.specialInstructions = specialInstructions;
     }
 
-    public String getDate() {
-        return date;
+    public ArrayList<String> getDate() {
+        return dates;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+
+    public  ArrayList<String> getTime() {
+        return times;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     public AbstractRoom getReservedRoom() {
         return reservedRoom;

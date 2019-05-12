@@ -11,6 +11,7 @@ public class Guest implements BaseGuest {
     private String securityDigits;
     private String expirationCard;
     private String cardNum;
+    private Reservation aReservation;
     //    private String creditCard;
 //    private String date;
 //    private String time;
@@ -24,6 +25,7 @@ public class Guest implements BaseGuest {
         this.cardNum = cardNum;
         this.securityDigits = securityDigits;
         this.expirationCard = expirationCard;
+        this.aReservation = aReservation;
     }
 
     public void addCardType(String aType){
@@ -99,6 +101,10 @@ public class Guest implements BaseGuest {
 
     public void setCardNum(String typeOfCard) {
         this.cardNum = typeOfCard;
+    }
+
+    public Reservation getaReservation() {
+        return aReservation;
     }
 }
 
