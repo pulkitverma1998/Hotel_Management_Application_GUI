@@ -12,6 +12,9 @@ public class ConcreteRoomFactory extends AbstractRoomFactory {
             case SMALL_PARTY_ROOM:
                 room = new SmallPartyRoom();
                 break;
+            case KARAOKE_LOUNGE_ROOM:
+                room = new KaraokeLoungeRoom();
+                break;
             case ADULT_BILLIARDS_LOUNGE_ROOM:
                 room = new AdultBilliardsLoungeRoom();
                 break;

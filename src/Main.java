@@ -1,26 +1,44 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
+        Guest ajay = new Guest("Ajay", "7142320342", "ajay@yahoo.com", "3432498594839485");
+        Guest pulkit = new Guest("Pulkit", "743823243", "pulkit@yahoo.com", "43534234234234");
+
+
+
+        // Creates an Adult Billiard Lounge room and a Medium Party Room
+        // Abstract Factory Pattern
         ConcreteRoomFactory aRoom = new ConcreteRoomFactory();
-        Guest ajay = new Guest("Ajay", "7142320342", "ajay@sexyladies.com", "3432498594839485");
-        Guest pulkit = new Guest("Pulkit", "743823243", "pulkit@sexyladies.com", "43534234234234");
+        AbstractRoom smallParty = null;
+        AbstractRoom mediumParty = null;
+        AbstractRoom aquaWorldRoom = null;
+        smallParty = aRoom.createAbstractRoom(RoomType.SMALL_PARTY_ROOM);
+        mediumParty = aRoom.createAbstractRoom(RoomType.MEDIUM_PARY_ROOM);
+        aquaWorldRoom = aRoom.createAbstractRoom(RoomType.AQUAWORLD_ROOM);
 
-        AbstractRoom myRoom = null;
-        AbstractRoom anotherRoonm = null;
-        myRoom = aRoom.createAbstractRoom(RoomType.ADULT_BILLIARDS_LOUNGE_ROOM);
-        anotherRoonm = aRoom.createAbstractRoom(RoomType.MEDIUM_PARY_ROOM);
-        System.out.println(anotherRoonm.getCapacity());
-        //System.out.println();
-        System.out.println(myRoom.getCapacity());
+        System.out.println(smallParty.getDescription());
+        System.out.println(mediumParty.getDescription());
+        System.out.println(aquaWorldRoom.getDescription());
 
-        myRoom.attach(ajay);
-        myRoom.attach(pulkit);
-        myRoom.Notify();
+        smallParty.attach(ajay);
+        mediumParty.attach(pulkit);
+        smallParty.Notify();
+        mediumParty.Notify();
 
+        // We created a pizza and added toppings
         Pizza pizza = new BellPepper(new Sausage(new Onion(new BasicPizza())));
         pizza.addToppings();
 
-        BasicMealPlan basicMealPlan = new BasicMealPlan();
-        System.out.println(basicMealPlan.toString());
+        ArrayList<String> sodaFlavor = new ArrayList<>(Arrays.asList("Grape Soda", "Orange Soda"));
+        ArrayList<Pizza> pizzas = new ArrayList<>(Arrays.asList(pizza));
+        //BasicMealPlan basicMealPlan = new BasicMealPlan(pizza, sodaFlavor);
+        //System.out.println(basicMealPlan.toString());
+        MainFrame mainFrame = new MainFrame();
+
+
     }
 }
