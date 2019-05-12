@@ -5,6 +5,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateSpinner extends JPanel {
+    protected JSpinner aSpinner;
+    protected JSpinner bSpinner;
+    protected JSpinner cSpinner;
     public DateSpinner(){
         String[] dateLabels = {"Month: ","Day: ", "Year: ", "Another Date: "};
         int dLength = dateLabels.length;
@@ -17,7 +20,7 @@ public class DateSpinner extends JPanel {
         String[] aMonths = getMonthStrings(); // month's names
         //discrepancy, check back
         SpinnerListModel monthModel = new SpinnerListModel(aMonths);
-        JSpinner aSpinner = addLabeledSpinner(this, dateLabels[0], monthModel);
+        aSpinner = addLabeledSpinner(this, dateLabels[0], monthModel);
         //format spinner with more padding and aligned to the right of text field
         aTextField = getTextField(aSpinner);
         aTextField.setColumns(10);
@@ -28,7 +31,7 @@ public class DateSpinner extends JPanel {
                 0 - 31, //min
                 0 + 31, //max
                 1);                //step
-        JSpinner bSpinner = addLabeledSpinner(this, dateLabels[1], dayModel);
+        bSpinner = addLabeledSpinner(this, dateLabels[1], dayModel);
 
         bTextField = getTextField(bSpinner);
         bTextField.setColumns(10);
@@ -40,7 +43,7 @@ public class DateSpinner extends JPanel {
                 currentYear - 100, //min
                 currentYear + 100, //max
                 1);                //step
-        JSpinner cSpinner = addLabeledSpinner(this, dateLabels[1], yearModel);
+        cSpinner = addLabeledSpinner(this, dateLabels[2], yearModel);
         //Get rid of the comma for thousand's
         cSpinner.setEditor(new JSpinner.NumberEditor(cSpinner, "#"));
 

@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class NewReservationFrame extends JFrame {
     private JLabel qName;
@@ -55,6 +57,14 @@ public class NewReservationFrame extends JFrame {
     private JButton saveButton;
     private JButton cancelButton;
 
+    private List<JCheckBox> cardBoxes = new ArrayList<>();
+    private List<JCheckBox> contactBoxes = new ArrayList<>();
+    private List<String> selectedCards = new ArrayList<>();
+    private List<String> selectedContact = new ArrayList<>();
+
+    ArrayList<String> aDates = new ArrayList<>();
+
+
     public NewReservationFrame(){
         createComponents();
         this.setSize(1400, 200);
@@ -64,6 +74,7 @@ public class NewReservationFrame extends JFrame {
     }
 
     public void createComponents(){
+
         JPanel panel = new JPanel();
         String[] rooms = {"Small Party Room", "Medium Party Room", "Aqua World Room", "Karaoke Room", "Adult Billard Room"};
         String[] meals = {"Basic Meal Plan", "Bronze Meal Plan", "Silver Meal Plan", "Gold Meal Plan", "Platinum Meal Plan"};
@@ -98,12 +109,13 @@ public class NewReservationFrame extends JFrame {
         qCardExp = new JLabel("Enter Expiration date:" );
         cardExp = new JTextField("",10);
         qTypeCard = new JLabel("Select your type of card: ");
-        qVisa = new JLabel("visa");
-        visa = new JCheckBox();
-        qMC =  new JLabel("master card");
-        masterCard = new JCheckBox();
-        qAE = new JLabel("american express");
-        americanExpress = new JCheckBox();
+        visa = new JCheckBox("visa");
+        masterCard = new JCheckBox("master card");
+        americanExpress = new JCheckBox("american express");
+        cardBoxes.add(visa);
+        cardBoxes.add(masterCard);
+        cardBoxes.add(americanExpress);
+
 
 
         qContact = new JLabel("Would you like us to contact via text or phone?");
@@ -111,12 +123,19 @@ public class NewReservationFrame extends JFrame {
         qCPhone = new JLabel("Phone: ");
         contactEmail = new JCheckBox();
         contactPhone = new JCheckBox();
-
+        contactBoxes.add(contactEmail);
+        contactBoxes.add(contactPhone);
 
         cancelButton = new JButton("Cancel");
         saveButton = new JButton("Save");
 
         DateSpinner newDateSpinner = new DateSpinner();
+        String monthValue = newDateSpinner.getTextField(newDateSpinner.aSpinner).getText();
+        String dayValue = newDateSpinner.getTextField(newDateSpinner.bSpinner).getText();
+        String yearValue = newDateSpinner.getTextField(newDateSpinner.cSpinner).getText();
+        aDates.add(monthValue);
+        aDates.add(dayValue);
+        aDates.add(yearValue);
 
     /*    ActionListener saveListener = new saveButtonListener();
         saveButton.addActionListener(saveListener);
@@ -148,11 +167,11 @@ public class NewReservationFrame extends JFrame {
         panel.add(qCardExp);
         panel.add(cardExp);
         panel.add(qTypeCard);
-        panel.add(qVisa);
+        //panel.add(qVisa);
         panel.add(visa);
-        panel.add(qMC);
+        //panel.add(qMC);
         panel.add(masterCard);
-        panel.add(qAE);
+        //panel.add(qAE);
         panel.add(americanExpress);
         panel.add(qContact);
         panel.add(qCEmail);
@@ -163,27 +182,39 @@ public class NewReservationFrame extends JFrame {
         panel.add(saveButton);
         this.add(panel);
     }
-/*
     class saveButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent click) {
-            dispose();
+            Reservation aReservation = new Reservation((String) mealPlans.getSelectedItem(), aDates);
+            Guest aGuest = new Guest((String) name.getText(), (String) phone.getText(), (String) email.getText(), (String) cardName.getText(), (String) cardNum.getText(), cardSec.getText(), cardExp.getText(), aReservation);
+            selectedCards.clear();
+            for(int i = 0; i < cardBoxes.size(); i++){
+                if(cardBoxes.get(i).isSelected()) {
+                    aGuest.setTypeOfCard(cardBoxes.get(i).getText());
+                }
+            }
+            selectedContact.clear();
+            for(int i = 0; i < contactBoxes.size(); i++){
+                if(contactBoxes.get(i).isSelected()) {
+                    aGuest.setContact(contactBoxes.get(i).getText());
+                }
+            }
+/*            dispose();
             boolean selectedTwo = heated.isSelected();
             PastryItem newPItem = new PastryItem(selected, (String)endFlavor.getSelectedItem(), selectedTwo);
             Main.setItemList(newPItem);
             ItemPurchaseFrame newIPF = new ItemPurchaseFrame(true, false);
             newIPF.setSize(450, 500);
-            newIPF.settField();
+            newIPF.settField();*/
         }
     }
 
-    class cancelButtonListener implements ActionListener {
+/*    class cancelButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent click) {
             new ItemPurchaseFrame(false, true);
             dispose();
         }
-    }
-*/
+    }*/
 
 }
