@@ -86,11 +86,11 @@ public class MainFrame extends JFrame {
         panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 
         centerPanel.add(panelTitle);
-        addAMealDescription(centerPanel , "Basic Meal PLan" , basicMealPlan.toString());
-        addAMealDescription(centerPanel, "Bronze Meal PLan" , bronzeMealPlan.toString());
-        addAMealDescription(centerPanel, "Silver Meal PLan" , silverMealPlan.toString());
-        addAMealDescription(centerPanel , "Gold Meal PLan" , goldMealPlan.toString());
-        addAMealDescription(centerPanel , "Platinum Meal PLan" , platinumMealPlan.toString());
+        addAMealDescription(centerPanel , "Basic Meal Plan" , basicMealPlan.toString());
+        addAMealDescription(centerPanel, "Bronze Meal Plan" , bronzeMealPlan.toString());
+        addAMealDescription(centerPanel, "Silver Meal Plan" , silverMealPlan.toString());
+        addAMealDescription(centerPanel , "Gold Meal Plan" , goldMealPlan.toString());
+        addAMealDescription(centerPanel , "Platinum Meal Plan" , platinumMealPlan.toString());
 
         scrollPane = new JScrollPane(centerPanel);
         this.add(scrollPane, BorderLayout.CENTER);
@@ -156,34 +156,35 @@ public class MainFrame extends JFrame {
 
         if (mealName.equals("All Meals")){
             createDefaultMealPanel();
-        }else if (mealName.equals("Basic Meal PLan")){
-            panelTitle = new JLabel("Basic Meal PLan");
+        }else if (mealName.equals("Basic Meal Plan")){
+            System.out.println("hello");
+            panelTitle = new JLabel("Basic Meal Plan");
             panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
             centerPanel.add(panelTitle);
-            addAMealDescription(centerPanel, "Basic Meal PLan" , basicMealPlan.toString());
-        }else if (mealName.equals("Bronze Meal PLan")){
-            panelTitle = new JLabel("Bronze Meal PLan");
+            addAMealDescription(centerPanel, "Basic Meal Plan" , basicMealPlan.toString());
+        }else if (mealName.equals("Bronze Meal Plan")){
+            panelTitle = new JLabel("Bronze Meal Plan");
             panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
             centerPanel.add(panelTitle);
-            addAMealDescription(centerPanel, "Bronze Meal PLan" , bronzeMealPlan.toString());
+            addAMealDescription(centerPanel, "Bronze Meal Plan" , bronzeMealPlan.toString());
 
-        }else if (mealName.equals("Silver Meal PLan")){
-            panelTitle = new JLabel("Silver Meal PLan");
+        }else if (mealName.equals("Silver Meal Plan")){
+            panelTitle = new JLabel("Silver Meal Plan");
             panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
             centerPanel.add(panelTitle);
-            addAMealDescription(centerPanel, "Silver Meal PLan" , silverMealPlan.toString());
+            addAMealDescription(centerPanel, "Silver Meal Plan" , silverMealPlan.toString());
 
-        }else if (mealName.equals("Gold Meal PLan")){
-            panelTitle = new JLabel("Gold Meal PLan");
+        }else if (mealName.equals("Gold Meal Plan")){
+            panelTitle = new JLabel("Gold Meal Plan");
             panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
             centerPanel.add(panelTitle);
-            addAMealDescription(centerPanel, "Gold Meal PLan" , goldMealPlan.toString());
+            addAMealDescription(centerPanel, "Gold Meal Plan" , goldMealPlan.toString());
 
-        }else if (mealName.equals("Platinum Meal PLan")){
-            panelTitle = new JLabel("Platinum Meal PLan");
+        }else if (mealName.equals("Platinum Meal Plan")){
+            panelTitle = new JLabel("Platinum Meal Plan");
             panelTitle.setFont(new Font(Font.SERIF, Font.BOLD, 30));
             centerPanel.add(panelTitle);
-            addAMealDescription(centerPanel, "Platinum Meal PLan" , platinumMealPlan.toString());
+            addAMealDescription(centerPanel, "Platinum Meal Plan" , platinumMealPlan.toString());
 
         }
         scrollPane = new JScrollPane(centerPanel);
@@ -364,42 +365,41 @@ public class MainFrame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent click) {
-            JMenuItem menuItem = (JMenuItem) click.getSource();
-            String item = menuItem.getText();
-            System.out.println(item);
-            if(item.equals("All Meals")) {
+            JMenuItem item = (JMenuItem) click.getSource();
+            if(item.getText().equals("All Meals")) {
                 centerPanel.removeAll();
-                createMeal(item);
+                createMeal("All Meals");
                 centerPanel.revalidate();
                 centerPanel.repaint();
             }
-            else if(item.equals("Basic Meal Plan")){
+            else if(item.getText().equals("Basic Meal Plan")){
+                System.out.println("inside");
                 centerPanel.removeAll();
-                createMeal(item);
+                createMeal("Basic Meal Plan");
                 centerPanel.revalidate();
                 centerPanel.repaint();
             }
-            else if(item.equals("Bronze Meal Plan")){
+            else if(item.getText().equals("Bronze Meal Plan")){
                 centerPanel.removeAll();
-                createMeal(item);
+                createMeal("Bronze Meal Plan");
                 centerPanel.revalidate();
                 centerPanel.repaint();
             }
-            else if(item.equals("Silver Meal Plan")){
+            else if(item.getText().equals("Silver Meal Plan")){
                 centerPanel.removeAll();
-                createMeal(item);
+                createMeal("Silver Meal Plan");
                 centerPanel.revalidate();
                 centerPanel.repaint();
             }
-            else if(item.equals("Gold Meal Plan")){
+            else if(item.getText().equals("Gold Meal Plan")){
                 centerPanel.removeAll();
-                createMeal(item);
+                createMeal("Gold Meal Plan");
                 centerPanel.revalidate();
                 centerPanel.repaint();
             }
-            else if(item.equals("Platinum Meal Plan")){
+            else if(item.getText().equals("Platinum Meal Plan")){
                 centerPanel.removeAll();
-                createMeal(item);
+                createMeal("Platinum Meal Plan");
                 centerPanel.revalidate();
                 centerPanel.repaint();
             }
