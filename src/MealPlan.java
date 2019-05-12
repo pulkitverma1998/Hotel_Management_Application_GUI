@@ -15,6 +15,10 @@ public class MealPlan extends AbstractRoom {
         cost = 0.0;
     }
 
+    public MealPlan() {
+
+    }
+
     public int getNoOfPizzas() {
         return noOfPizzas;
     }

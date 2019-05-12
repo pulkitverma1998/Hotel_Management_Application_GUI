@@ -1,11 +1,11 @@
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -91,8 +91,6 @@ public class MainFrame extends JFrame {
 //        scrollPane = new JScrollPane(centerPanel);
 //        this.add(scrollPane, BorderLayout.CENTER);
 //    }
-
-
 
     private void createRoomPanel(String roomName) {
         centerPanel = new JPanel();
@@ -285,11 +283,15 @@ public class MainFrame extends JFrame {
     private void addARoomDescription(Container container, String imageURL, String roomName, String roomDesc) {
         JPanel p = new JPanel();
 
+        BufferedImage img = null;
+
         try {
             URL url = new URL(imageURL);
-            ImageIcon icon = new ImageIcon(url);
+            img = ImageIO.read(url);
+            Image dimg = img.getScaledInstance(270 , 300, Image.SCALE_FAST);
+            ImageIcon icon = new ImageIcon(dimg);
             JLabel picture = new JLabel(roomName, icon, JLabel.CENTER);
-            picture.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+            picture.setFont(new Font(Font.SERIF, Font.BOLD, 15));
 
             //Set the position of the text, relative to the icon:
             picture.setVerticalTextPosition(JLabel.TOP);
@@ -305,7 +307,7 @@ public class MainFrame extends JFrame {
         JTextArea description = new JTextArea(5,10);
         description.append(roomDesc);
         description.setEditable(false);
-        description.setFont(new Font(Font.SERIF, Font.PLAIN, 20));
+        description.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
         description.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
         p.add(description);
 

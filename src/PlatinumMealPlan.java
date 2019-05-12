@@ -18,6 +18,10 @@ public class PlatinumMealPlan extends MealPlan {
         this.iceCream = _iceCream;
     }
 
+    public PlatinumMealPlan() {
+
+    }
+
     @Override
     public String toString() {
         String description="➤ Included in meal:" +
