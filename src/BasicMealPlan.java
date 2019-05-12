@@ -14,7 +14,7 @@ public class BasicMealPlan extends MealPlan {
         super();
         super.setNoOfPizzas(3);
         super.setNoOfSodas(3);
-        super.setCost(65);
+        super.setCost(65.0);
     }
 
     @Override

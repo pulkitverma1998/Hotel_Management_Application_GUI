@@ -18,7 +18,7 @@ public class SilverMealPlan extends MealPlan {
         super();
         super.setNoOfPizzas(3);
         super.setNoOfSodas(5);
-        super.setCost(90);
+        super.setCost(90.0);
     }
 
     @Override

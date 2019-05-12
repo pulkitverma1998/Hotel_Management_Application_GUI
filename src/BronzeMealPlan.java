@@ -19,7 +19,7 @@ public class BronzeMealPlan extends MealPlan {
         super();
         super.setNoOfPizzas(3);
         super.setNoOfSodas(5);
-        super.setCost(75);
+        super.setCost(75.0);
     }
 
     @Override

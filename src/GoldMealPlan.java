@@ -11,7 +11,7 @@ public class GoldMealPlan extends MealPlan {
         super(_pizzas, _sodaFlavors);
         super.setNoOfPizzas(3);
         super.setNoOfSodas(5);
-        super.setCost(120);
+        super.setCost(120.0);
         this.salad = "salad";
         this.breadSticks = "bread sticks";
         this.wings = _wings;
@@ -21,7 +21,7 @@ public class GoldMealPlan extends MealPlan {
         super();
         super.setNoOfPizzas(3);
         super.setNoOfSodas(5);
-        super.setCost(120);
+        super.setCost(120.0);
     }
 
     @Override
@@ -32,7 +32,8 @@ public class GoldMealPlan extends MealPlan {
                 "\n\t• Salad" +
                 "\n\t• Bread-sticks" +
                 "\n\t• Choice of 2 chicken wing flavors " +
-                "\n\t(Spicy mild,Lemon-pepper, BBQ, Sesame, or Diablo).\n\t Pick bone-in or boneless.\n" +
+                "\n\t  (Spicy mild,Lemon-pepper, BBQ, Sesame, or Diablo)" +
+                "\n\t  Pick bone-in or boneless.\n" +
                 "➤ Cost: $"+getCost()+"";
         return description;
     }

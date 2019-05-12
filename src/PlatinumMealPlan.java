@@ -11,7 +11,7 @@ public class PlatinumMealPlan extends MealPlan {
         super(_pizzas, _sodaFlavors);
         super.setNoOfPizzas(4);
         super.setNoOfSodas(5);
-        super.setCost(150);
+        super.setCost(150.0);
         this.salad = "salad";
         this.breadSticks = "bread sticks";
         this.wings = _wings;
@@ -22,7 +22,7 @@ public class PlatinumMealPlan extends MealPlan {
         super();
         super.setNoOfPizzas(4);
         super.setNoOfSodas(5);
-        super.setCost(150);
+        super.setCost(150.0);
     }
 
     @Override
