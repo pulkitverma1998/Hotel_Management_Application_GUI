@@ -1,22 +1,25 @@
-
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.JLabel;
 
 public class CheckOutFrame extends JFrame{
     private JButton checkOutButton;
     private JButton cancelButton;
     private String[] currentListing ;
     private JList<String> list ;
-    private JPanel p ;
+    private JPanel pan ;
+    private JLabel label ;
+    protected static int checkingOutIndex ;
 
-    CheckOutFrame(){
+    public CheckOutFrame(){
+        checkingOutIndex = 0 ;
+        this.label = new JLabel("Current Check-Ins");
         this.currentListing = new String[CheckMain.checkedIn.size()];
         for(int i = 0 ; i < CheckMain.checkedIn.size(); i++ )
             this.currentListing[i] = CheckMain.checkedIn.get(i);
@@ -26,7 +29,6 @@ public class CheckOutFrame extends JFrame{
         this.setSize(450, 600);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     private void createComponents() {
@@ -34,33 +36,41 @@ public class CheckOutFrame extends JFrame{
         this.checkOutButton = new JButton("Guest Check-Out");
         this.cancelButton = new JButton("Cancel");
 
-
         ActionListener checkOutListener = new CheckOutListener() ;
         checkOutButton.addActionListener(checkOutListener );
 
         ActionListener cancelListener = new CancelListener() ;
         cancelButton.addActionListener(cancelListener);
 
-        this.p = new JPanel() ;
-        this.p.add(list);
-        this.p.add(checkOutButton);
-        this.p.add(cancelButton);
+        this.pan = new JPanel() ;
+        this.pan.add(label);
+        this.pan.add(list);
+        this.pan.add(checkOutButton);
+        this.pan.add(cancelButton);
 
-        this.add(this.p);
+        this.add(this.pan);
     }
     class CheckOutListener implements ActionListener
     {
 
         @Override
         public void actionPerformed(ActionEvent click) {
+
             Component b = (Component) click.getSource() ;
 
-            CheckMain.checkedIn.remove( currentListing[list.getSelectedIndex()]);
+            checkingOutIndex =  list.getSelectedIndex();
+
+            FinalizeFrame finalizeFrame = new FinalizeFrame() ;
+            finalizeFrame.setVisible(true);
+            finalizeFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
             JFrame c = (JFrame) SwingUtilities.getRoot(b);
 
-            c.setVisible(false) ;
 
+
+
+
+            c.setVisible(false) ;
         }
 
 

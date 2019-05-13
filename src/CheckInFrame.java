@@ -1,4 +1,3 @@
-
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,9 +16,9 @@ public class CheckInFrame extends JFrame{
     private JButton cancelButton;
     private JList<String> list ;
     protected static JTextArea textArea ;
-    private JPanel pan ;
+    private JPanel pa ;
 
-    CheckInFrame(){
+    public CheckInFrame(){
 
         this.listing = new String[CheckMain.res.size()] ;
 
@@ -46,11 +45,11 @@ public class CheckInFrame extends JFrame{
         ActionListener cancelListener = new CancelListener() ;
         cancelButton.addActionListener(cancelListener);
 
-        this.pan = new JPanel() ;
-        this.pan.add(list);
-        this.pan.add(checkInButton);
-        this.pan.add(cancelButton);
-        this.add(this.pan);
+        this.pa = new JPanel() ;
+        this.pa.add(list);
+        this.pa.add(checkInButton);
+        this.pa.add(cancelButton);
+        this.add(this.pa);
 
     }
 

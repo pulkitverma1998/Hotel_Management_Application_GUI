@@ -15,23 +15,20 @@ class CheckMain extends JFrame{
     private JButton checkInButton;
     private JButton checkOutButton;
     private JButton cancelButton;
-    private JPanel panel ;
+    private JPanel p ;
 
-    CheckMain(){
+    public CheckMain(){
         this.res = new ArrayList<String> () ;
         this.checkedIn = new ArrayList<String> () ;
         this.res.add("Joe");
         this.res.add("Paul");
         this.res.add("Angie" );
 
-
-
         createComponents() ;
         this.setTitle("Guest Check In/Out Menu");
         this.setSize(450, 100);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
     }
     private void createComponents() {
@@ -48,11 +45,11 @@ class CheckMain extends JFrame{
         ActionListener cancelListener = new CancelListener() ;
         cancelButton.addActionListener(cancelListener);
 
-        this.panel = new JPanel() ;
-        this.panel.add(checkInButton);
-        this.panel.add(checkOutButton) ;
-        this.panel.add(cancelButton);
-        this.add(this.panel);
+        this.p = new JPanel() ;
+        this.p.add(checkInButton);
+        this.p.add(checkOutButton) ;
+        this.p.add(cancelButton);
+        this.add(this.p);
 
     }
 
