@@ -464,7 +464,7 @@ public class MainFrame extends JFrame {
             String item = menuItem.getText();
 
             if (item.equals("New Reservation...")){
-                setVisible(false);
+                setVisible(true); ///////////This is the change I did to where the frame is kept open. When user closes or cancels the new reservation frame, you go back to the main frame
                 new NewReservationFrame();
             }else if (item.equals("Edit Existing Reservation...")){
 
