@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -65,7 +64,7 @@ public class FinalizeFrame extends JFrame{
             invoice =  "Damage cost: " + (String)damagesField.getText()
                     + "\nTypes of Damages: " + descriptionField.getText() ;
 
-            CheckMain.checkedIn.remove( CheckOutFrame.checkingOutIndex );
+            CheckMainFrame.checkedIn.remove( CheckOutFrame.checkingOutIndex );
 
             InvoiceFrame invoiceFrame = new InvoiceFrame() ;
             invoiceFrame.setVisible(true);

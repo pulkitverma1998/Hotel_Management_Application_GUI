@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-class CheckMain extends JFrame{
+class CheckMainFrame extends JFrame{
     //instance variables
     protected static ArrayList<String> res ;
     protected static ArrayList<String> checkedIn ; ////////Working on this part
@@ -17,7 +17,7 @@ class CheckMain extends JFrame{
     private JButton cancelButton;
     private JPanel p ;
 
-    public CheckMain(){
+    public CheckMainFrame(){
         this.res = new ArrayList<String> () ;
         this.checkedIn = new ArrayList<String> () ;
         this.res.add("Joe");

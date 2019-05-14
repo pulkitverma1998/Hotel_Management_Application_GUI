@@ -20,9 +20,9 @@ public class CheckOutFrame extends JFrame{
     public CheckOutFrame(){
         checkingOutIndex = 0 ;
         this.label = new JLabel("Current Check-Ins");
-        this.currentListing = new String[CheckMain.checkedIn.size()];
-        for(int i = 0 ; i < CheckMain.checkedIn.size(); i++ )
-            this.currentListing[i] = CheckMain.checkedIn.get(i);
+        this.currentListing = new String[CheckMainFrame.checkedIn.size()];
+        for(int i = 0; i < CheckMainFrame.checkedIn.size(); i++ )
+            this.currentListing[i] = CheckMainFrame.checkedIn.get(i);
 
         createComponents() ;
         this.setTitle("Check-Out Frame");

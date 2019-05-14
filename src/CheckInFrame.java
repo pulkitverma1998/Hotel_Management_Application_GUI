@@ -1,7 +1,6 @@
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -20,10 +19,10 @@ public class CheckInFrame extends JFrame{
 
     public CheckInFrame(){
 
-        this.listing = new String[CheckMain.res.size()] ;
+        this.listing = new String[CheckMainFrame.res.size()] ;
 
-        for(int i = 0 ; i < CheckMain.res.size(); i++)
-            this.listing[i] = CheckMain.res.get(i);
+        for(int i = 0; i < CheckMainFrame.res.size(); i++)
+            this.listing[i] = CheckMainFrame.res.get(i);
 
         ///////////Create Array of string here
         createComponents() ;
@@ -59,8 +58,8 @@ public class CheckInFrame extends JFrame{
         public void actionPerformed(ActionEvent click) {
             Component b = (Component) click.getSource() ;
 
-            CheckMain.checkedIn.add( listing[list.getSelectedIndex()]);
-            CheckMain.res.remove(list.getSelectedIndex());
+            CheckMainFrame.checkedIn.add( listing[list.getSelectedIndex()]);
+            CheckMainFrame.res.remove(list.getSelectedIndex());
             JFrame c = (JFrame) SwingUtilities.getRoot(b);
 
             c.setVisible(false) ;

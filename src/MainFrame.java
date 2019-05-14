@@ -292,13 +292,13 @@ public class MainFrame extends JFrame {
         submenu = new JMenu("Manage Current Reservation");
         submenu.setMnemonic(KeyEvent.VK_S);
 
-        menuItem = new JMenuItem("Check-in");
+        menuItem = new JMenuItem("Check-in/Check-out");
         submenu.add(menuItem);
         menuItem.addActionListener(new ReservationListener());
 
-        menuItem = new JMenuItem("Check-out");
-        submenu.add(menuItem);
-        menuItem.addActionListener(new ReservationListener());
+//        menuItem = new JMenuItem("Check-out");
+//        submenu.add(menuItem);
+//        menuItem.addActionListener(new ReservationListener());
 
 
         menu.add(submenu);
@@ -468,13 +468,18 @@ public class MainFrame extends JFrame {
                 new NewReservationFrame();
             }else if (item.equals("Edit Existing Reservation...")){
 
-            }else if (item.equals("Check-in")){
+            }else if (item.equals("Check-in/Check-out")){
                 setVisible(false);
-                new CheckInFrame();
-            }else if (item.equals("Check-out")){
-                setVisible(false);
-                new CheckOutFrame();
+                //new CheckInFrame();
+                new CheckMainFrame();
             }
+
+
+//            else if (item.equals("Check-out")){
+//                setVisible(false);
+//                //new CheckOutFrame();
+//                new CheckMainFrame();
+//            }
 
         }
     }
