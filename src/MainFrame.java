@@ -348,7 +348,7 @@ public class MainFrame extends JFrame {
         p.add(description);
 
         JButton bookButton = new JButton("Book Now");
-        //bookButton.addActionListener(new BookNowListener(roomName));
+        bookButton.addActionListener(new BookNowListener());
         p.add(bookButton);
         container.add(p);
     }
@@ -485,16 +485,12 @@ public class MainFrame extends JFrame {
         }
     }
 
-//    class BookNowListener implements ActionListener {
-//        String rName;
-//        public BookNowListener(String roomName) {
-//            rName=roomName;
-//        }
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            setVisible(false);
-//            new NewReservationFrame(rName);
-//        }
-//    }
+    class BookNowListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            setVisible(false);
+            new NewReservationFrame();
+        }
+    }
 }

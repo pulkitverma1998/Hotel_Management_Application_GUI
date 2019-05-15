@@ -87,7 +87,7 @@ public class NewReservationFrame extends JFrame {
     ArrayList<String> aTimes = new ArrayList<>();
 
     public NewReservationFrame(){
-        createComponents();
+        createComponents("Default");
         this.setSize(1400, 200);
         this.setTitle("New Reservation");
         this.setVisible(true);
@@ -113,7 +113,7 @@ public class NewReservationFrame extends JFrame {
         //panel.add(roomUpgrades);
 
     }
-    public void createComponents(){
+    public void createComponents(String roomName){
         panel = new JPanel();
         //[] roomUpgrades ={}
         String[] rooms = {"Small Party Room", "Medium Party Room", "Aqua World Room", "Karaoke Room", "Adult Billard Room"};
@@ -272,6 +272,7 @@ public class NewReservationFrame extends JFrame {
         public void actionPerformed(ActionEvent click) {
             //new ItemPurchaseFrame(false, true);
             dispose();
+            new MainFrame();
         }
     }
     class particularRoomUpgradeListener implements ActionListener {
