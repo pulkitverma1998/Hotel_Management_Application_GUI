@@ -76,14 +76,23 @@ public class NewReservationFrame extends JFrame {
 
 
     public NewReservationFrame(){
-        createComponents();
+        createComponents("Default");
         this.setSize(1400, 200);
         this.setTitle("New Reservation");
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void createComponents(){
+    public NewReservationFrame(String roomName){
+        createComponents(roomName);
+        this.setSize(1400, 200);
+        this.setTitle("New Reservation");
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+
+    public void createComponents(String user){
 
         JPanel panel = new JPanel();
         String[] rooms = {"Small Party Room", "Medium Party Room", "Aqua World Room", "Karaoke Room", "Adult Billard Room"};
@@ -93,6 +102,18 @@ public class NewReservationFrame extends JFrame {
         String[] ices = {"Chocolate Fudge", "Vanilla Bean", "Strawberry Shortcake", "Choco-mint", "Butter Percan"};
 
         roomTypes = new JComboBox(rooms);
+        if (user.equals("Medium Party Room")){
+            roomTypes.setSelectedIndex(1);}
+
+        else if (user.equals("Aqua Room")){
+            roomTypes.setSelectedIndex(2);}
+
+        else if (user.equals("Karaoke Room")){
+            roomTypes.setSelectedIndex(3);}
+
+        else if (user.equals("Adult Billard Room")){
+            roomTypes.setSelectedIndex(4);}
+
         mealPlans = new JComboBox(meals);
         toppingsPizza = new JComboBox(tops);
         sodaChoices = new JComboBox(sodas);
