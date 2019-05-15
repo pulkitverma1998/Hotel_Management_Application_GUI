@@ -24,9 +24,9 @@ public class Main {
         System.out.println(mediumParty.getDescription());
         System.out.println(aquaWorldRoom.getDescription());
 
-       // smallParty.attach(ajay);
-        // mediumParty.attach(pulkit);
-        smallParty.Notify();
+        //smallParty.attach(ajay);
+        //mediumParty.attach(pulkit);
+        //smallParty.Notify();
         mediumParty.Notify();
 
         // We created a pizza and added toppings

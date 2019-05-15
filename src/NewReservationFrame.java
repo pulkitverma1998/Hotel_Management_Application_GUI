@@ -1,12 +1,14 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.List;
 
 public class NewReservationFrame extends JFrame {
+
+    private JPanel panel;
+
     private JLabel qName;
     private JTextField name;
 
@@ -54,6 +56,14 @@ public class NewReservationFrame extends JFrame {
     private JComboBox sodaChoices;
     private JComboBox iceCream;
 
+
+    private JComboBox roomUpgrade;
+
+    private JComboBox particularRoomUpgrades = new JComboBox();
+    private JLabel particularRU = new JLabel();
+    private JButton addUpgrade = new JButton("Add");
+
+
     protected DateSpinner newDateSpinner = new DateSpinner();
     protected TimeSpinner newTimeSpinner = new TimeSpinner();
     private String monthValue;
@@ -65,56 +75,54 @@ public class NewReservationFrame extends JFrame {
 
     private JButton saveButton;
     private JButton cancelButton;
+    //private JButton upgradeButton;
 
     private List<JCheckBox> cardBoxes = new ArrayList<>();
     private List<JCheckBox> contactBoxes = new ArrayList<>();
     private List<String> selectedCards = new ArrayList<>();
     private List<String> selectedContact = new ArrayList<>();
+    //private List<RoomUpgrades> roomUpgrades = new ArrayList<>();
 
     ArrayList<String> aDates = new ArrayList<>();
     ArrayList<String> aTimes = new ArrayList<>();
 
-
     public NewReservationFrame(){
-        createComponents("Default");
+        createComponents();
         this.setSize(1400, 200);
         this.setTitle("New Reservation");
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public NewReservationFrame(String roomName){
-        createComponents(roomName);
-        this.setSize(1400, 200);
-        this.setTitle("New Reservation");
-        this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public void createRoomUpgradeComponents(JPanel panel){
+        String[] selectAlert = {"Select Room"};
+        ActionListener roomUpgradeListener = new roomUpgradeListener();
+        roomTypes.addActionListener(roomUpgradeListener);
+        roomUpgrade = new JComboBox(selectAlert);
+        panel.add(roomUpgrade);
+        //panel.add(roomUpgrades);
+
     }
 
+    public void createParticularRoomUpgradeComponents(JPanel panel){
+        String[] selectAlert = {"Select Upgrade"};
+        ActionListener particularRoomUpgradeListener = new particularRoomUpgradeListener();
+        roomUpgrade.addActionListener(particularRoomUpgradeListener);
+        particularRoomUpgrades = new JComboBox(selectAlert);
+        panel.add(particularRoomUpgrades);
+        //panel.add(roomUpgrades);
 
-    public void createComponents(String user){
-
-        JPanel panel = new JPanel();
+    }
+    public void createComponents(){
+        panel = new JPanel();
+        //[] roomUpgrades ={}
         String[] rooms = {"Small Party Room", "Medium Party Room", "Aqua World Room", "Karaoke Room", "Adult Billard Room"};
-        String[] meals = {"Basic Meal Plan", "Bronze Meal Plan", "Silver Meal Plan", "Gold Meal Plan", "Platinum Meal Plan"};
         String[] tops = {"Cheese", "Pepperoni", "Ham", "Jalapeno", "Sausage", "Mushroom", "Pineapple", "Bell Pepper", "Onion", "Garlic Chicken"};
         String[] sodas = {"Coca-cola", "Diet Coke", "Canada Dry", "Orange Crush", "Squirt", "Root Beer"};
         String[] ices = {"Chocolate Fudge", "Vanilla Bean", "Strawberry Shortcake", "Choco-mint", "Butter Percan"};
 
         roomTypes = new JComboBox(rooms);
-        if (user.equals("Medium Party Room")){
-            roomTypes.setSelectedIndex(1);}
-
-        else if (user.equals("Aqua Room")){
-            roomTypes.setSelectedIndex(2);}
-
-        else if (user.equals("Karaoke Room")){
-            roomTypes.setSelectedIndex(3);}
-
-        else if (user.equals("Adult Billard Room")){
-            roomTypes.setSelectedIndex(4);}
-
-        mealPlans = new JComboBox(meals);
+        //mealPlans = new JComboBox(meals);
         toppingsPizza = new JComboBox(tops);
         sodaChoices = new JComboBox(sodas);
         iceCream = new JComboBox(ices);
@@ -130,6 +138,7 @@ public class NewReservationFrame extends JFrame {
         dob = new JTextField("",10);
         qEmail = new JLabel("Email: ");
         email = new JTextField("",20);
+        email.setVisible(false);
 
         qCardName = new JLabel("Credit card name: ");
         cardName = new JTextField("",10);
@@ -159,6 +168,7 @@ public class NewReservationFrame extends JFrame {
 
         cancelButton = new JButton("Cancel");
         saveButton = new JButton("Save");
+        //upgradeButton = new JButton("Upgrade");
 
 
         ActionListener saveListener = new saveButtonListener();
@@ -166,10 +176,14 @@ public class NewReservationFrame extends JFrame {
         ActionListener cancelListener = new cancelButtonListener();
         cancelButton.addActionListener(cancelListener);
 
+        //ActionListener roomSelector = new roomSelector();
+        //roomTypes.addActionListener(roomSelector);
+
         panel.add(newDateSpinner);
         panel.add(newTimeSpinner);
         panel.add(roomTypes);
-        panel.add(mealPlans);
+        createRoomUpgradeComponents(panel);
+        createParticularRoomUpgradeComponents(panel);
         panel.add(toppingsPizza);
         panel.add(sodaChoices);
         panel.add(iceCream);
@@ -200,13 +214,15 @@ public class NewReservationFrame extends JFrame {
         panel.add(americanExpress);
         panel.add(qContact);
         panel.add(qCEmail);
-        panel.add(qCPhone);
         panel.add(contactEmail);
+        panel.add(qCPhone);
         panel.add(contactPhone);
         panel.add(cancelButton);
         panel.add(saveButton);
         this.add(panel);
     }
+
+
     class saveButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent click) {
@@ -256,7 +272,74 @@ public class NewReservationFrame extends JFrame {
         public void actionPerformed(ActionEvent click) {
             //new ItemPurchaseFrame(false, true);
             dispose();
-            new MainFrame();
+        }
+    }
+    class particularRoomUpgradeListener implements ActionListener {
+            String[] quantity = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}; //Towel Rental, Party Favor Bag, Projector
+            String[] partyDecor = {"Hawaiian", "Sea Life", "Jungle", "Space", "Modern Theme"};
+            String[] meals = {"Bronze Meal Plan", "Silver Meal Plan", "Gold Meal Plan", "Platinum Meal Plan"};
+
+            @Override
+            public void actionPerformed(ActionEvent click) {
+                roomUpgrade = (JComboBox) click.getSource();
+                String aRoomUpgrade = (String) roomUpgrade.getSelectedItem();
+                if(aRoomUpgrade == "Meal Plan Upgrade"){
+                    particularRU.setText("Choose Meal Plan: ");
+                    particularRoomUpgrades.setModel(new JComboBox(meals).getModel());
+                }
+                else if(aRoomUpgrade == "Towel Rentals"){
+                    particularRU.setText("Quantity: ");
+                    particularRoomUpgrades.setModel(new JComboBox(quantity).getModel());
+                }
+                else if(aRoomUpgrade == "Party Favors Bag"){
+                    particularRU.setText("Quantity: ");
+                    particularRoomUpgrades.setModel(new JComboBox(quantity).getModel());
+                }
+                else if(aRoomUpgrade == "Projector"){
+                    particularRU.setText("Quantity: ");
+                    particularRoomUpgrades.setModel(new JComboBox(quantity).getModel());
+                }
+                else if(aRoomUpgrade == "Party Decoration and Set Up"){
+                    particularRU.setText("Quantity: ");
+                    particularRoomUpgrades.setModel(new JComboBox(partyDecor).getModel());
+                }
+                panel.revalidate();
+                panel.repaint();
+
+                //dispose();
+        }
+    }
+    class roomUpgradeListener implements ActionListener {
+        String[] aquaWorldRoom = {"Meal Plan Upgrade", "Towel Rentals", "Party Favors Bag", "Projector", "Party Decoration and Set up"};
+        String[] mediumParty = {"Meal Plan Upgrade", "Party Favors Bag", "Projector", "Party Decoration and Set up"};
+        String[] smallPartyRoom = {"Meal Plan Upgrade", "Party Favors Bag", "Projector", "Party Decoration and Set up"};
+        String[] karaokeAdultRoom = {"Add Meal Plan"};
+        String[] adultBillarRoom = {"Add Meal Plan"};
+
+        @Override
+        public void actionPerformed(ActionEvent click) {
+            roomTypes = (JComboBox) click.getSource();
+
+            String aRoomType = (String) roomTypes.getSelectedItem();
+            //System.out.println("Inside!");
+            if(aRoomType == "Small Party Room"){
+                roomUpgrade.setModel(new JComboBox(smallPartyRoom).getModel());
+                //roomUpgrade.addItem(Arrays.toString(smallPartyRoom));
+            } else if (aRoomType == "Medium Party Room") {
+                roomUpgrade.setModel(new JComboBox(mediumParty).getModel());
+            }
+            else if(aRoomType == "Aqua World Room"){
+                roomUpgrade.setModel(new JComboBox(aquaWorldRoom).getModel());
+            }
+            else if(aRoomType == "Karaoke Room"){
+                roomUpgrade.setModel(new JComboBox(karaokeAdultRoom).getModel());
+
+            }
+            else if(aRoomType == "Adult Billard Room"){
+                roomUpgrade.setModel(new JComboBox(adultBillarRoom).getModel());
+            }
+            panel.revalidate();
+            panel.repaint();
         }
     }
 

@@ -1,4 +1,4 @@
-public class TowelRentals extends RoomUpdrages {
+public class TowelRentals extends RoomUpgrades {
     int towelQuantity = 0;
 
     public TowelRentals(int towelQ) {

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class PartyDecorationsAndSetUp extends RoomUpdrages{
+public class PartyDecorationsAndSetUp extends RoomUpgrades {
     ArrayList<String> decorations;
 
     public PartyDecorationsAndSetUp() {

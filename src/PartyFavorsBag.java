@@ -1,4 +1,4 @@
-public class PartyFavorsBag extends RoomUpdrages{
+public class PartyFavorsBag extends RoomUpgrades {
     int bagQuantity = 0;
 
     public PartyFavorsBag(int bagQ) {

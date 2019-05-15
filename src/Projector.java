@@ -1,4 +1,4 @@
-public class Projector extends RoomUpdrages {
+public class Projector extends RoomUpgrades {
     int hours = 0;
 
     public Projector(int hr) {

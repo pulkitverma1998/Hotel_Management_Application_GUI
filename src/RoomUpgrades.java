@@ -1,9 +1,9 @@
-public class RoomUpdrages {
+public class RoomUpgrades {
 
     String name;
     double cost;
 
-    public RoomUpdrages() {
+    public RoomUpgrades() {
         this.name = "";
         this.cost = 0;
     }

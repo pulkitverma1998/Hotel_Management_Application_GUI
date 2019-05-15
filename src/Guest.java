@@ -15,7 +15,7 @@ public class Guest implements BaseGuest {
     //    private String creditCard;
 //    private String date;
 //    private String time;
-    public ArrayList<RoomUpdrages> upgrades = new ArrayList<>();
+    public ArrayList<RoomUpgrades> upgrades = new ArrayList<>();
 
     public Guest(String name, String phoneNum, String email, String cardName, String cardNum, String securityDigits, String expirationCard, Reservation aReservation) {
         this.name = name;
