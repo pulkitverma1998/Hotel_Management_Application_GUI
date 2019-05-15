@@ -1,9 +1,9 @@
 public class TowelRentals extends RoomUpgrades {
-    int towelQuantity = 0;
+    private int towelQuantity;
 
     public TowelRentals(int towelQ) {
-        super.setName("Towel Rental");
-        super.setCost(towelQuantity * 2);
+        //super.setName("Towel Rental");
+        //super.setCost(towelQuantity * 2);
         towelQuantity = towelQ;
     }
 

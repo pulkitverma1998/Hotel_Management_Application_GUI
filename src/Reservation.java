@@ -11,10 +11,9 @@ public class Reservation {
     AbstractRoom reservedRoom;
 
 
-    Reservation(String mealPlan, ArrayList<String> dates, ArrayList<String> times){
+    Reservation(ArrayList<String> dates, ArrayList<String> times){
         this.dates = dates;
         this.times = times;
-        this.mealPlan = mealPlan;
         //this.upgrades = upgrades;
         //this.specialInstructions = specialInstructions;
 

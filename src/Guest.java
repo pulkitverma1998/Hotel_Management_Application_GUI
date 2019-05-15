@@ -12,12 +12,18 @@ public class Guest implements BaseGuest {
     private String expirationCard;
     private String cardNum;
     private Reservation aReservation;
-    //    private String creditCard;
-//    private String date;
-//    private String time;
-    public ArrayList<RoomUpgrades> upgrades = new ArrayList<>();
 
-    public Guest(String name, String phoneNum, String email, String cardName, String cardNum, String securityDigits, String expirationCard, Reservation aReservation) {
+    private ArrayList<RoomUpgrades> roomUpgrades;
+
+    public ArrayList<RoomUpgrades> getRoomUpgrades() {
+        return roomUpgrades;
+    }
+
+    public void setRoomUpgrades(ArrayList<RoomUpgrades> roomUpgrades) {
+        this.roomUpgrades = roomUpgrades;
+    }
+
+    public Guest(String name, String phoneNum, String email, String cardName, String cardNum, String securityDigits, String expirationCard, Reservation aReservation, ArrayList<RoomUpgrades> roomUpgrades) {
         this.name = name;
         this.phoneNum = phoneNum;
         this.email = email;
@@ -26,6 +32,7 @@ public class Guest implements BaseGuest {
         this.securityDigits = securityDigits;
         this.expirationCard = expirationCard;
         this.aReservation = aReservation;
+        //this.aUpgrades = new ArrayList<>();
     }
 
     public void addCardType(String aType){
@@ -106,6 +113,7 @@ public class Guest implements BaseGuest {
     public Reservation getaReservation() {
         return aReservation;
     }
+
 }
 
 //    public String getCreditCard() {
