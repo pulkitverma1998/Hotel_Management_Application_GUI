@@ -235,6 +235,7 @@ public class NewReservationFrame extends JFrame {
         public void actionPerformed(ActionEvent click) {
             //new ItemPurchaseFrame(false, true);
             dispose();
+            new MainFrame();
         }
     }
 

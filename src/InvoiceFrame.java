@@ -27,7 +27,7 @@ public class InvoiceFrame extends JFrame{
     public void createComponents() {
         this.panel = new JPanel() ;
         label = new JLabel("Invoice:");
-        textArea = new JTextArea(30,39);
+        textArea = new JTextArea(30,35);
         textArea.setText(FinalizeFrame.invoice); //invoice is a string that is passed from Finalize Frame.
         textArea.setEditable(false);
         exitButton = new JButton("Exit");

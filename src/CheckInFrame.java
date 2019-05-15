@@ -27,7 +27,7 @@ public class CheckInFrame extends JFrame{
         ///////////Create Array of string here
         createComponents() ;
         this.setTitle("Guest Check-In");
-        this.setSize(450, 600);
+        this.setSize(450, 450);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -64,6 +64,7 @@ public class CheckInFrame extends JFrame{
 
             c.setVisible(false) ;
 
+
         }
     }
     class CancelListener implements ActionListener
@@ -72,11 +73,14 @@ public class CheckInFrame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent click) {
 
-            Component b = (Component) click.getSource()  ;
+//            Component b = (Component) click.getSource()  ;
+//
+//            JFrame c = (JFrame) SwingUtilities.getRoot(b);
+//
+//            c.setVisible(false);
 
-            JFrame c = (JFrame) SwingUtilities.getRoot(b);
-
-            c.setVisible(false);
+            dispose();
+            new CheckMainFrame();
         }
     }
 }

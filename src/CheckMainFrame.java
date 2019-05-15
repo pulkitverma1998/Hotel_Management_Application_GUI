@@ -57,6 +57,7 @@ class CheckMainFrame extends JFrame{
     {
         @Override
         public void actionPerformed(ActionEvent click) {
+           // setVisible(false);
             CheckInFrame checkInFrame = new CheckInFrame() ;
 
             checkInFrame.setVisible(true);
@@ -69,6 +70,7 @@ class CheckMainFrame extends JFrame{
     {
         @Override
         public void actionPerformed(ActionEvent click) {
+            //setVisible(false);
             CheckOutFrame checkOutFrame = new CheckOutFrame() ;
 
             checkOutFrame.setVisible(true);
@@ -82,11 +84,13 @@ class CheckMainFrame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent click) {
 
-            Component b = (Component) click.getSource()  ;
-
-            JFrame c = (JFrame) SwingUtilities.getRoot(b);
-
-            c.setVisible(false);
+//            Component b = (Component) click.getSource()  ;
+//
+//            JFrame c = (JFrame) SwingUtilities.getRoot(b);
+//
+//            c.setVisible(false);
+            dispose();
+            new MainFrame();
         }
     }
 }

@@ -26,7 +26,7 @@ public class CheckOutFrame extends JFrame{
 
         createComponents() ;
         this.setTitle("Check-Out Frame");
-        this.setSize(450, 600);
+        this.setSize(450, 450);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -55,7 +55,7 @@ public class CheckOutFrame extends JFrame{
 
         @Override
         public void actionPerformed(ActionEvent click) {
-
+            setVisible(false);
             Component b = (Component) click.getSource() ;
 
             checkingOutIndex =  list.getSelectedIndex();
@@ -65,10 +65,6 @@ public class CheckOutFrame extends JFrame{
             finalizeFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
             JFrame c = (JFrame) SwingUtilities.getRoot(b);
-
-
-
-
 
             c.setVisible(false) ;
         }
@@ -85,6 +81,8 @@ public class CheckOutFrame extends JFrame{
             JFrame c = (JFrame) SwingUtilities.getRoot(b);
 
             c.setVisible(false);
+//            dispose();
+//            new CheckMainFrame();
 
         }
 
