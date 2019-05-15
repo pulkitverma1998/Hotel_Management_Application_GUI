@@ -299,8 +299,8 @@ public class NewReservationFrame extends JFrame {
                     particularRU.setText("Quantity: ");
                     particularRoomUpgrades.setModel(new JComboBox(quantity).getModel());
                 }
-                else if(aRoomUpgrade == "Party Decoration and Set Up"){
-                    particularRU.setText("Quantity: ");
+                else if(aRoomUpgrade == "Party Decoration and Set up"){
+                    particularRU.setText("Choose Set-Up: ");
                     particularRoomUpgrades.setModel(new JComboBox(partyDecor).getModel());
                 }
                 panel.revalidate();

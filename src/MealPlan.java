@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class MealPlan extends AbstractRoom {
@@ -12,13 +13,13 @@ public class MealPlan extends AbstractRoom {
         noOfPizzas = 0;
         noOfSodas = 0;
         this.sodaFlavors = _sodaFlavors;
-        cost = 0.0;
+        cost = 0;
     }
 
     public MealPlan() {
         noOfPizzas = 0;
         noOfSodas = 0;
-        cost = 0.0;
+        cost = 0;
     }
 
     public int getNoOfPizzas() {
