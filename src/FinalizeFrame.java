@@ -73,7 +73,7 @@ public class FinalizeFrame extends JFrame{
 
             //IMPLEMENTED A DAMAGE COST HERE. THIS SHOULD BE ADDED TO THE TOTAL COST AFTER
             double damageCost = Double.parseDouble(damagesField.getText());
-            invoice =  "Damage cost: " + (String)damagesField.getText()
+            invoice =  CheckInFrame.receipt + "Damage cost: " + (String)damagesField.getText()
                     + "\nTypes of Damages: " + descriptionField.getText() ;
 
             CheckMainFrame.checkedIn.remove( CheckOutFrame.checkingOutIndex );

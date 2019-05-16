@@ -159,5 +159,26 @@ public class Guest implements BaseGuest {
     public void setMinutes(String minutes) {
         this.minutes = minutes;
     }
+
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "name='" + name + '\'' +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", email='" + email + '\'' +
+                ", cardName='" + cardName + '\'' +
+                ", cardNum='" + cardNum + '\'' +
+                ", securityDigits='" + securityDigits + '\'' +
+                ", expirationCard='" + expirationCard + '\'' +
+                ", cardType='" + cardType + '\'' +
+                ", roomType='" + roomType + '\'' +
+                ", month='" + month + '\'' +
+                ", day='" + day + '\'' +
+                ", year='" + year + '\'' +
+                ", hours='" + hours + '\'' +
+                ", minutes='" + minutes + '\'' +
+                ", roomUpgrades=" + roomUpgrades +
+                '}';
+    }
 }
 

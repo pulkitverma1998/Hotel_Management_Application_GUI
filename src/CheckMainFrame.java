@@ -25,7 +25,7 @@ class CheckMainFrame extends JFrame{
      */
     public CheckMainFrame(){
         //this.res = new ArrayList<String> () ;
-        //this.checkedIn = new ArrayList<String> () ;
+        this.checkedIn = new ArrayList<> () ;
         //this.res.add("Joe");
         //this.res.add("Paul");
         //this.res.add("Angie" );

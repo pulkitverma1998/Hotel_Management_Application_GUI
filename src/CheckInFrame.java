@@ -19,12 +19,14 @@ public class CheckInFrame extends JFrame{
     private JList<String> list ;
     protected static JTextArea textArea ;
     private JPanel pa ;
+    static protected String receipt ;
+
 
     /**
      * Constructor used to initialize the Check in Frame
      */
     public CheckInFrame(){
-
+        this.receipt = "" ;
         //this.listing = new String[CheckMainFrame.res.size()] ;
         this.listing = new String[NewReservationFrame.guests.size()];
 
@@ -71,9 +73,10 @@ public class CheckInFrame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent click) {
             Component b = (Component) click.getSource() ;
-
+            System.out.println(listing[list.getSelectedIndex()]);
             CheckMainFrame.checkedIn.add( listing[list.getSelectedIndex()]);
             //CheckMainFrame.res.remove(list.getSelectedIndex());
+            receipt = NewReservationFrame.guests.get(list.getSelectedIndex()).toString() ;
             NewReservationFrame.guests.remove(list.getSelectedIndex());
             JFrame c = (JFrame) SwingUtilities.getRoot(b);
 

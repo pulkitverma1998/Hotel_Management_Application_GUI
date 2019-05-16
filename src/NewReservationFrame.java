@@ -149,6 +149,8 @@ public class NewReservationFrame extends JFrame {
 
             Guest guest = new Guest(nameTextField.getText(), phoneTextField.getText(), emailTextField.getText(), creditCardNameTextField.getText(), creditCardNumberTextField.getText(), creditCardSecurityDigitTextField.getText(), creditCardExpDateTextField.getText(), roomType, month, day, year, hours, minutes, roomUpgrades, cardType);
             guests.add(guest);
+            dispose();
+            new MainFrame();
         }
     }
 
