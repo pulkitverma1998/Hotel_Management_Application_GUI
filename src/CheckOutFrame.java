@@ -7,7 +7,9 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.JLabel;
-
+/**
+ * Frame Class created to Display information of the guest that are ready to check-Out
+ */
 public class CheckOutFrame extends JFrame{
     private JButton checkOutButton;
     private JButton cancelButton;
@@ -16,7 +18,9 @@ public class CheckOutFrame extends JFrame{
     private JPanel pan ;
     private JLabel label ;
     protected static int checkingOutIndex ;
-
+    /**
+     * Constructor used to initialize the check-Out Frame
+     */
     public CheckOutFrame(){
         checkingOutIndex = 0 ;
         this.label = new JLabel("Current Check-Ins");
@@ -30,7 +34,9 @@ public class CheckOutFrame extends JFrame{
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
+    /**
+     * Method used to make the components of check-Out frame
+     */
     private void createComponents() {
         this.list = new JList<>(currentListing) ;
         this.checkOutButton = new JButton("Guest Check-Out");
@@ -50,6 +56,9 @@ public class CheckOutFrame extends JFrame{
 
         this.add(this.pan);
     }
+    /**
+     * Inner class that is used to make the button "check-Out" listener for the guest
+     */
     class CheckOutListener implements ActionListener
     {
 
@@ -71,6 +80,9 @@ public class CheckOutFrame extends JFrame{
 
 
     }
+    /**
+     * Inner class made to delete the frame and go back to the previous frame when the "Cancel" button is pressed
+     */
     class CancelListener implements ActionListener
     {
 

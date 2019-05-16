@@ -4,10 +4,18 @@ import java.awt.Container;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Class made to make the Date Spinner that can be added in the Panel when guest wants to reserve the room
+ */
 public class DateSpinner extends JPanel {
     protected JSpinner aSpinner;
     protected JSpinner bSpinner;
     protected JSpinner cSpinner;
+
+
+    /**
+     * Constructor made to create the components of the Date Spinner and initialize them.
+     */
     public DateSpinner(){
         String[] dateLabels = {"Month: ","Day: ", "Year: ", "Another Date: "};
         int dLength = dateLabels.length;
@@ -85,9 +93,7 @@ public class DateSpinner extends JPanel {
         }
     }
 
-    static protected JSpinner addLabeledSpinner(Container c,
-                                                String label,
-                                                SpinnerModel model) {
+    static protected JSpinner addLabeledSpinner(Container c, String label, SpinnerModel model) {
         JLabel l = new JLabel(label);
         c.add(l);
 

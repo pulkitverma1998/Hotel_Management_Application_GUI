@@ -8,6 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/**
+ * Class made to have all the check- in and check-out information for guests.
+ */
 class CheckMainFrame extends JFrame{
     //instance variables
     //protected static ArrayList<String> res ;
@@ -17,6 +20,9 @@ class CheckMainFrame extends JFrame{
     private JButton cancelButton;
     private JPanel p ;
 
+    /**
+     * Constructor to make the frame
+     */
     public CheckMainFrame(){
         //this.res = new ArrayList<String> () ;
         //this.checkedIn = new ArrayList<String> () ;
@@ -31,6 +37,10 @@ class CheckMainFrame extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+
+    /**
+     * Method to create components of this Check-In and Check-Out Main Frame
+     */
     private void createComponents() {
         this.checkInButton = new JButton("Check-In");
         this.checkOutButton = new JButton("Check-Out");
@@ -53,6 +63,9 @@ class CheckMainFrame extends JFrame{
 
     }
 
+    /**
+     * Inner class that is made to make the check-In frame when the user presses that button
+     */
     class CheckInListener implements ActionListener
     {
         @Override
@@ -65,7 +78,9 @@ class CheckMainFrame extends JFrame{
             checkInFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         }
     }
-
+    /**
+     * Inner class that is made to make the check-Out frame when the user presses that button
+     */
     class CheckOutListener implements ActionListener
     {
         @Override
@@ -78,7 +93,9 @@ class CheckMainFrame extends JFrame{
             checkOutFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         }
     }
-
+    /**
+     * Inner class that is made to go back when user presses that button
+     */
     class CancelListener implements ActionListener
     {
         @Override

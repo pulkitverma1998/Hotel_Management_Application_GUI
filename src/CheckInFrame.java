@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
+/**
+ * Frame Class created to Display information of the guest that are ready to check-in
+ */
 public class CheckInFrame extends JFrame{
     //instance variables
     private String[] listing ;
@@ -17,6 +20,9 @@ public class CheckInFrame extends JFrame{
     protected static JTextArea textArea ;
     private JPanel pa ;
 
+    /**
+     * Constructor used to initialize the Check in Frame
+     */
     public CheckInFrame(){
 
         //this.listing = new String[CheckMainFrame.res.size()] ;
@@ -33,6 +39,10 @@ public class CheckInFrame extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+
+    /**
+     * Method used to make the components of Check-In frame
+     */
     private void createComponents() {
         this.list = new JList<>(listing) ;
 
@@ -53,6 +63,9 @@ public class CheckInFrame extends JFrame{
 
     }
 
+    /**
+     * Inner class that is used to make the button "Check In" listener for the guest
+     */
     class CheckInListener implements ActionListener
     {
         @Override
@@ -69,6 +82,10 @@ public class CheckInFrame extends JFrame{
 
         }
     }
+
+    /**
+     * Inner class made to delete the frame and go back to the previous frame when the "Cancel" button is pressed
+     */
     class CancelListener implements ActionListener
     {
 

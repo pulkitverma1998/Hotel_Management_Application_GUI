@@ -2,11 +2,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class used to make the Aqua Wold Rooms
+ */
 public class AquaWorldRoom extends AbstractRoom {
 
     private List<String> includedInCost = new ArrayList<>(Arrays.asList("access to showers/lockers", "life guards on duty", "DJ", "table & chair set-up, Basic Meal Plan"));
     private String hoursOperation = "M-Sun: 8AM - 2 AM";
 
+    /**
+     * Constructor used to initialize the variables of this type of rooms.
+     * Sets the features and cost of this aqua world rooms
+     */
     public AquaWorldRoom() {
         super.setNumOfRooms(1);
         super.setDescription("Olympic-sized pool with water slide, kiddie pool, and large jacuzzi");
@@ -16,6 +23,10 @@ public class AquaWorldRoom extends AbstractRoom {
         super.setRestriction("To access water facilities, bathing suits must be worn at all times.");
     }
 
+    /**
+     * Method used to display the information about this room
+     * @return all about this room as a string
+     */
     @Override
     public String toString() {
         String description = "➤ Number of Rooms: 1\n" +

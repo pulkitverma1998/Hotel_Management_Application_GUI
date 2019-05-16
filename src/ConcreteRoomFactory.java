@@ -1,4 +1,12 @@
+/**
+ * Class made to create the Concrete Objects of the Rooms
+ */
 public class ConcreteRoomFactory extends AbstractRoomFactory {
+    /**
+     * Metode used to create the objects
+     * @param aRoom a type of the room that we want to create
+     * @return an Abstract room
+     */
     @Override
     public AbstractRoom createAbstractRoom(RoomType aRoom) {
         AbstractRoom room = null;
