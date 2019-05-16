@@ -18,7 +18,7 @@ public class FinalizeFrame extends JFrame{
     private JLabel descriptionLabel ;
     private JButton finalizeButton ;
     private JButton cancelButton ;
-    private JPanel panell ;
+    private JPanel panell;
     final private int FIELD_WIDTH = 25 ;
     final private JTextField damagesField = new JTextField(FIELD_WIDTH);
     final private JTextField descriptionField = new JTextField(FIELD_WIDTH) ;
