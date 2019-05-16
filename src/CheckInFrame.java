@@ -25,10 +25,11 @@ public class CheckInFrame extends JFrame{
      */
     public CheckInFrame(){
 
-        this.listing = new String[CheckMainFrame.res.size()] ;
+        //this.listing = new String[CheckMainFrame.res.size()] ;
+        this.listing = new String[NewReservationFrame.guests.size()];
 
-        for(int i = 0; i < CheckMainFrame.res.size(); i++)
-            this.listing[i] = CheckMainFrame.res.get(i);
+        for(int i = 0; i < NewReservationFrame.guests.size(); i++)
+            this.listing[i] = NewReservationFrame.guests.get(i).getName();
 
         ///////////Create Array of string here
         createComponents() ;
@@ -72,7 +73,8 @@ public class CheckInFrame extends JFrame{
             Component b = (Component) click.getSource() ;
 
             CheckMainFrame.checkedIn.add( listing[list.getSelectedIndex()]);
-            CheckMainFrame.res.remove(list.getSelectedIndex());
+            //CheckMainFrame.res.remove(list.getSelectedIndex());
+            NewReservationFrame.guests.remove(list.getSelectedIndex());
             JFrame c = (JFrame) SwingUtilities.getRoot(b);
 
             c.setVisible(false) ;
