@@ -9,6 +9,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
+/**
+ * Frame class for the GUI of the Invoice that contains all the purchases
+ */
 public class InvoiceFrame extends JFrame{
     private JButton exitButton ;
     private JLabel label ;
@@ -16,6 +19,9 @@ public class InvoiceFrame extends JFrame{
     private JScrollPane scrollPane ;
     private JTextArea textArea ;
 
+    /**
+     * Constructor to initialize the frame
+     */
     public InvoiceFrame(){
         createComponents();
         this.setTitle("Guest Invoice");
@@ -24,6 +30,9 @@ public class InvoiceFrame extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Method to create the components of the invoice frame
+     */
     public void createComponents() {
         this.panel = new JPanel() ;
         label = new JLabel("Invoice:");
@@ -41,6 +50,10 @@ public class InvoiceFrame extends JFrame{
         panel.add(exitButton);
         this.add(panel);
     }
+
+    /**
+     * Inner class to implement the Listener for the Exit Button
+     */
     class ExitListener implements ActionListener
     {
 

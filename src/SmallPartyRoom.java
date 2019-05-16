@@ -1,12 +1,17 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * Class used to make the Small Party Room
+ */
 public class SmallPartyRoom extends AbstractRoom{
 
     private List<String> includedCost = new ArrayList<String>(Arrays.asList("Table & chair set-up","Basic Meal Plan"));
     private String hoursOperation = "M-Sun: 9AM - 12 AM";
-
+    /**
+     * Constructor used to initialize the variables of this type of rooms.
+     * Sets the features and cost of this Small Party Room
+     */
     public SmallPartyRoom(){
         super.setNumOfRooms(10);
         super.setDescription("Room with party tables and chairs, adjacent to arcade");
@@ -15,7 +20,10 @@ public class SmallPartyRoom extends AbstractRoom{
         super.setIncludedInCost(includedCost);
         //upGrades
     }
-
+    /**
+     * Method used to display the information about this room
+     * @return all about this room as a string
+     */
     @Override
     public String toString() {
         String description="➤ Number of Rooms: 10\n" +

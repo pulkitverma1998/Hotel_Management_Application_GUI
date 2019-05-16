@@ -4,10 +4,15 @@ import java.awt.Color;
 import java.awt.Container;
 import java.util.Calendar;
 import java.util.Date;
-
+/**
+ * Class made to make the Time Spinner that can be added in the Panel when guest wants to reserve the room
+ */
 public class TimeSpinner extends JPanel {
     protected JSpinner aSpinner;
     protected JSpinner bSpinner;
+    /**
+     * Constructor made to create the components of the Time Spinner and initialize them.
+     */
     public TimeSpinner(){
         String[] dateLabels = {"Hour: ","Minute: "};
         int dLength = dateLabels.length;

@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+/**
+ * Frame Class used to make the GUI that will ask for the damage to the rooms and their description
+ */
 public class FinalizeFrame extends JFrame{
     protected static String invoice ;
     private JLabel damagesLabel ;
@@ -20,7 +23,9 @@ public class FinalizeFrame extends JFrame{
     final private JTextField damagesField = new JTextField(FIELD_WIDTH);
     final private JTextField descriptionField = new JTextField(FIELD_WIDTH) ;
 
-
+    /**
+     * Constructor to initialize the frame
+     */
     public FinalizeFrame(){
         createComponents() ;
         this.setTitle("Finalize");
@@ -29,6 +34,9 @@ public class FinalizeFrame extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Method to generate the Components of the finalize frame
+     */
     private void createComponents() {
         this.invoice = "Invoice: " ;
         this.damagesLabel = new JLabel("Enter Damages: $");
@@ -52,6 +60,10 @@ public class FinalizeFrame extends JFrame{
         this.add(this.panell);
 
     }
+
+    /**
+     * Inner class to made the finalize button listener
+     */
     class FinalizeListener implements ActionListener
     {
         @Override
@@ -76,6 +88,10 @@ public class FinalizeFrame extends JFrame{
         }
 
     }
+
+    /**
+     * Inner class used to make the Cancel button listener
+     */
     class CancelListener implements ActionListener
     {
 
