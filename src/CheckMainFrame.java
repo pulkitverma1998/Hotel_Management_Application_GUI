@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 
 class CheckMainFrame extends JFrame{
     //instance variables
-    protected static ArrayList<String> res ;
+    //protected static ArrayList<String> res ;
     protected static ArrayList<String> checkedIn ; ////////Working on this part
     private JButton checkInButton;
     private JButton checkOutButton;
@@ -18,11 +18,11 @@ class CheckMainFrame extends JFrame{
     private JPanel p ;
 
     public CheckMainFrame(){
-        this.res = new ArrayList<String> () ;
-        this.checkedIn = new ArrayList<String> () ;
-        this.res.add("Joe");
-        this.res.add("Paul");
-        this.res.add("Angie" );
+        //this.res = new ArrayList<String> () ;
+        //this.checkedIn = new ArrayList<String> () ;
+        //this.res.add("Joe");
+        //this.res.add("Paul");
+        //this.res.add("Angie" );
 
         createComponents() ;
         this.setTitle("Guest Check In/Out Menu");

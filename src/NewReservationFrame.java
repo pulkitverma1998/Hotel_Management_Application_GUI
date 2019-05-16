@@ -40,7 +40,7 @@ public class NewReservationFrame extends JFrame {
     private DateSpinner newDateSpinner;
     private TimeSpinner newTimeSpinner;
 
-    ArrayList<Guest> guests = new ArrayList<>();
+    static ArrayList<Guest> guests = new ArrayList<>();
     ArrayList<RoomUpgrades> roomUpgrades = new ArrayList<>();
 
     public void createComponents() {
