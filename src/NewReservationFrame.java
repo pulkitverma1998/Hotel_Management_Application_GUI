@@ -1,398 +1,247 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class NewReservationFrame extends JFrame {
-    TowelRentals aTowelRental = new TowelRentals(1);
-    private String aRoomUpgrade;
-    private RoomUpgrades myUpgrade;
-    private Guest aGuest;
+
     private JPanel panel;
 
-    private JLabel qName;
-    private JTextField name;
+    private JLabel name;
+    private JLabel phone;
+    private JLabel email;
+    private JLabel address;
+    private JLabel creditCardName;
+    private JLabel creditCardNumber;
+    private JLabel creditCardSecurityDigit;
+    private JLabel creditCardExpDate;
+    private JLabel creditCardTypeLabel;
+    private JLabel roomNameLabel;
 
-    private JLabel qPhone;
-    private JTextField phone;
+    private JTextField nameTextField;
+    private JTextField phoneTextField;
+    private JTextField emailTextField;
+    private JTextField addressTextField;
+    private JTextField creditCardNameTextField;
+    private JTextField creditCardNumberTextField;
+    private JTextField creditCardSecurityDigitTextField;
+    private JTextField creditCardExpDateTextField;
 
-    private JLabel qAddress;
-    private JTextField address;
+    private JButton addGuestButton;
+    private JButton addUpgradeButton;
 
-    private JLabel qDob;
-    private JTextField dob;
-
-    private JLabel qEmail;
-    private JTextField email;
-
-    private JLabel qCardName;
-    private JTextField cardName;
-
-    private JLabel qCardNu;
-    private JTextField cardNum;
-
-    private JLabel qCardSec;
-    private JTextField cardSec;
-
-    private JLabel qCardExp;
-    private JTextField cardExp;
-
-    private JLabel qTypeCard;
-    private JLabel qVisa;
-    private JCheckBox visa;
-    private JLabel qMC;
-    private JCheckBox masterCard;
-    private JLabel qAE;
-    private JCheckBox americanExpress;
-
-    private JLabel qContact;
-    private JLabel qCPhone;
-    private JLabel qCEmail;
-    private JCheckBox contactPhone;
-    private JCheckBox contactEmail;
-
-
-    private JComboBox mealPlans;
-    private JComboBox toppingsPizza;
-    private JComboBox sodaChoices;
-    private JComboBox iceCream;
-
+    private JComboBox creditCardType;
     private JComboBox roomTypes;
-    private JComboBox roomUpgrade;
-    private JComboBox particularRoomUpgrades = new JComboBox();
+    private JComboBox upgradeType;
+    private JComboBox specificUpgrade;
+    private JComboBox toppings;
+    private JComboBox sodaFlavors;
 
+    private DateSpinner newDateSpinner;
+    private TimeSpinner newTimeSpinner;
 
-
-
-    private JLabel particularRU = new JLabel();
-    private JButton addUpgrade = new JButton("Add");
-
-
-    protected DateSpinner newDateSpinner = new DateSpinner();
-    protected TimeSpinner newTimeSpinner = new TimeSpinner();
-    private String monthValue;
-    private String dayValue;
-    private String yearValue;
-    private String hourValue;
-    private String minuteValue;
-
-
-    private JButton saveButton;
-    private JButton cancelButton;
-    //private JButton upgradeButton;
-
-    private List<JCheckBox> cardBoxes = new ArrayList<>();
-    private List<JCheckBox> contactBoxes = new ArrayList<>();
-    private List<String> selectedCards = new ArrayList<>();
-    private List<String> selectedContact = new ArrayList<>();
-    //private List<RoomUpgrades> roomUpgrades = new ArrayList<>();
-
-    ArrayList<String> aDates = new ArrayList<>();
-    ArrayList<String> aTimes = new ArrayList<>();
+    ArrayList<Guest> guests = new ArrayList<>();
     ArrayList<RoomUpgrades> roomUpgrades = new ArrayList<>();
 
-    public NewReservationFrame(){
-        createComponents("Default");
+    public void createComponents() {
+        panel = new JPanel();
+        name = new JLabel("Name: ");
+        nameTextField = new JTextField(10);
+        phone = new JLabel("Phone Number: ");
+        phoneTextField = new JTextField(10);
+        email = new JLabel("Email Address");
+        emailTextField = new JTextField(10);
+        address = new JLabel("Home Address: ");
+        addressTextField = new JTextField(10);
+        creditCardName = new JLabel("Credit Card Name: ");
+        creditCardNameTextField = new JTextField(10);
+        creditCardNumber = new JLabel("Credit Card #: ");
+        creditCardNumberTextField = new JTextField(10);
+        creditCardSecurityDigit = new JLabel("Security Digits: ");
+        creditCardSecurityDigitTextField = new JTextField(10);
+        creditCardExpDate = new JLabel("Expiration Date: ");
+        creditCardExpDateTextField = new JTextField(10);
+        creditCardTypeLabel = new JLabel("Select Credit Card Type: ");
+        String[] cardTypes = {"Visa", "Master Card", "American Express"};
+        creditCardType = new JComboBox(cardTypes);
+        roomNameLabel = new JLabel("Select Room");
+        String[] room_types = {"Small Party Room", "Medium Party Room", "Aqua World Room", "Karaoke Room", "Adult Billiard Room"};
+        roomTypes = new JComboBox(room_types);
+        newDateSpinner = new DateSpinner();
+        newTimeSpinner = new TimeSpinner();
+        addGuestButton = new JButton("Save");
+
+        this.add(panel);
+        panel.add(name);
+        panel.add(nameTextField);
+        panel.add(phone);
+        panel.add(phoneTextField);
+        panel.add(email);
+        panel.add(emailTextField);
+        panel.add(address);
+        panel.add(addressTextField);
+        panel.add(creditCardName);
+        panel.add(creditCardNameTextField);
+        panel.add(creditCardNumber);
+        panel.add(creditCardNumberTextField);
+        panel.add(creditCardSecurityDigit);
+        panel.add(creditCardSecurityDigitTextField);
+        panel.add(creditCardExpDate);
+        panel.add(creditCardExpDateTextField);
+        panel.add(creditCardTypeLabel);
+        panel.add(creditCardType);
+        panel.add(roomNameLabel);
+        panel.add(roomTypes);
+        createUpgradeTypeComboBox(panel);
+        createSpecificUpgradeComboBox(panel);
+        panel.add(newDateSpinner);
+        panel.add(newTimeSpinner);
+        panel.add(addGuestButton);
+        ActionListener addGuestActionListener = new addGuestButtonListener();
+        addGuestButton.addActionListener(addGuestActionListener);
+    }
+
+    public void createUpgradeTypeComboBox(JPanel panel) {
+        String[] selectRoom = {"Select Room"};
+        String[] selectToppings = {"Select Toppings"};
+        String[] selectSoda = {"Select Soda Flavor"};
+        ActionListener roomTypeListener = new roomTypeListener();
+        roomTypes.addActionListener(roomTypeListener);
+        upgradeType = new JComboBox(selectRoom);
+        toppings = new JComboBox(selectToppings);
+        sodaFlavors = new JComboBox(selectSoda);
+        addUpgradeButton = new JButton("Add Upgrade");
+        ActionListener addUpgradeButtonListener = new addUpgradeButtonListener();
+        addUpgradeButton.addActionListener(addUpgradeButtonListener);
+        panel.add(upgradeType);
+        panel.add(toppings);
+        panel.add(sodaFlavors);
+        panel.add(addUpgradeButton);
+    }
+
+    public void createSpecificUpgradeComboBox(JPanel panel) {
+        String[] selectAlert = {"Select Upgrade"};
+        ActionListener specificUpgradeListener = new upgradeTypeListener();
+        upgradeType.addActionListener(specificUpgradeListener);
+        specificUpgrade = new JComboBox(selectAlert);
+        panel.add(specificUpgrade);
+    }
+
+    public NewReservationFrame() {
         this.setSize(1400, 200);
         this.setTitle("New Reservation");
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        createComponents();
     }
 
-    public void createRoomUpgradeComponents(JPanel panel){
-        String[] selectAlert = {"Select Room"};
-        ActionListener roomUpgradeListener = new roomUpgradeListener();
-        roomTypes.addActionListener(roomUpgradeListener);
-        roomUpgrade = new JComboBox(selectAlert);
-        panel.add(roomUpgrade);
-        //panel.add(roomUpgrades);
-
-    }
-
-    public void createParticularRoomUpgradeComponents(JPanel panel){
-        String[] selectAlert = {"Select Upgrade"};
-        ActionListener particularRoomUpgradeListener = new particularRoomUpgradeListener();
-        ActionListener upgradeTypeListener = new upgradeTypeListener();
-        roomUpgrade.addActionListener(particularRoomUpgradeListener);
-        particularRoomUpgrades.addActionListener(upgradeTypeListener);
-        //particularRoomUpgrades = new JComboBox(selectAlert);
-        ActionListener saveUpgradeListener = new saveUpgradeListener();
-        addUpgrade.addActionListener(saveUpgradeListener);
-        panel.add(particularRoomUpgrades);
-        panel.add(addUpgrade);
-        //panel.add(roomUpgrades);
-
-    }
-    public void createComponents(String roomName){
-        panel = new JPanel();
-        //[] roomUpgrades ={}
-        String[] rooms = {"Small Party Room", "Medium Party Room", "Aqua World Room", "Karaoke Room", "Adult Billard Room"};
-        String[] tops = {"Cheese", "Pepperoni", "Ham", "Jalapeno", "Sausage", "Mushroom", "Pineapple", "Bell Pepper", "Onion", "Garlic Chicken"};
-        String[] sodas = {"Coca-cola", "Diet Coke", "Canada Dry", "Orange Crush", "Squirt", "Root Beer"};
-        String[] ices = {"Chocolate Fudge", "Vanilla Bean", "Strawberry Shortcake", "Choco-mint", "Butter Percan"};
-
-        roomTypes = new JComboBox(rooms);
-        //mealPlans = new JComboBox(meals);
-        toppingsPizza = new JComboBox(tops);
-        sodaChoices = new JComboBox(sodas);
-        iceCream = new JComboBox(ices);
-
-
-        qName = new JLabel("Name: ");
-        name = new JTextField("",10);
-        qPhone = new JLabel("Phone: ");
-        phone = new JTextField("",10);
-        qAddress = new JLabel("Address: ");
-        address = new JTextField("",10);
-        qDob = new JLabel("Day of Birth: ");
-        dob = new JTextField("",10);
-        qEmail = new JLabel("Email: ");
-        email = new JTextField("",20);
-        email.setVisible(false);
-
-        qCardName = new JLabel("Credit card name: ");
-        cardName = new JTextField("",10);
-        qCardNu = new JLabel("Enter card #: ");
-        cardNum = new JTextField("",10);
-        qCardSec = new JLabel ("Enter security digits: ");
-        cardSec = new JTextField("",10);
-        qCardExp = new JLabel("Enter Expiration date:" );
-        cardExp = new JTextField("",10);
-        qTypeCard = new JLabel("Select your type of card: ");
-        visa = new JCheckBox("visa");
-        masterCard = new JCheckBox("master card");
-        americanExpress = new JCheckBox("american express");
-        cardBoxes.add(visa);
-        cardBoxes.add(masterCard);
-        cardBoxes.add(americanExpress);
-
-
-
-        qContact = new JLabel("Would you like us to contact via text or phone?");
-        qCEmail = new JLabel("Email: ");
-        qCPhone = new JLabel("Phone: ");
-        contactEmail = new JCheckBox();
-        contactPhone = new JCheckBox();
-        contactBoxes.add(contactEmail);
-        contactBoxes.add(contactPhone);
-
-        cancelButton = new JButton("Cancel");
-        saveButton = new JButton("Save");
-        //upgradeButton = new JButton("Upgrade");
-
-
-        ActionListener saveListener = new saveButtonListener();
-        saveButton.addActionListener(saveListener);
-        ActionListener cancelListener = new cancelButtonListener();
-        cancelButton.addActionListener(cancelListener);
-
-        //ActionListener roomSelector = new roomSelector();
-        //roomTypes.addActionListener(roomSelector);
-
-        panel.add(newDateSpinner);
-        panel.add(newTimeSpinner);
-        panel.add(roomTypes);
-        createRoomUpgradeComponents(panel);
-        createParticularRoomUpgradeComponents(panel);
-        panel.add(toppingsPizza);
-        panel.add(sodaChoices);
-        panel.add(iceCream);
-        panel.add(qName);
-        panel.add(name);
-        panel.add(qPhone);
-        panel.add(phone);
-        panel.add(qAddress);
-        panel.add(address);
-        panel.add(qDob);
-        panel.add(dob);
-        panel.add(qEmail);
-        panel.add(email);
-        panel.add(qCardName);
-        panel.add(cardName);
-        panel.add(qCardNu);
-        panel.add(cardNum);
-        panel.add(qCardSec);
-        panel.add(cardSec);
-        panel.add(qCardExp);
-        panel.add(cardExp);
-        panel.add(qTypeCard);
-        //panel.add(qVisa);
-        panel.add(visa);
-        //panel.add(qMC);
-        panel.add(masterCard);
-        //panel.add(qAE);
-        panel.add(americanExpress);
-        panel.add(qContact);
-        panel.add(qCEmail);
-        panel.add(contactEmail);
-        panel.add(qCPhone);
-        panel.add(contactPhone);
-        panel.add(cancelButton);
-        panel.add(saveButton);
-        this.add(panel);
-    }
-
-
-    class saveButtonListener implements ActionListener {
+    class addGuestButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent click) {
-            aDates.clear();
-            aTimes.clear();
+            String roomType = (String) roomTypes.getSelectedItem();
+            String cardType = (String) creditCardType.getSelectedItem();
+            String month = newDateSpinner.getTextField(newDateSpinner.aSpinner).getText();
+            String day = newDateSpinner.getTextField(newDateSpinner.bSpinner).getText();
+            String year = newDateSpinner.getTextField(newDateSpinner.cSpinner).getText();
 
-            monthValue = newDateSpinner.getTextField(newDateSpinner.aSpinner).getText();
-            dayValue = newDateSpinner.getTextField(newDateSpinner.bSpinner).getText();
-            yearValue = newDateSpinner.getTextField(newDateSpinner.cSpinner).getText();
-            aDates.add(monthValue);
-            aDates.add(dayValue);
-            aDates.add(yearValue);
-            hourValue = newTimeSpinner.getTextField(newTimeSpinner.aSpinner).getText();
-            minuteValue = newTimeSpinner.getTextField(newTimeSpinner.bSpinner).getText();
-            aTimes.add(hourValue);
-            aTimes.add(minuteValue);
+            String hours = newTimeSpinner.getTextField(newDateSpinner.aSpinner).getText();
+            String minutes = newTimeSpinner.getTextField(newDateSpinner.bSpinner).getText();
 
-            Reservation aReservation = new Reservation(aDates, aTimes);
-
-            aGuest = new Guest((String) name.getText(), (String) phone.getText(), (String) email.getText(), (String) cardName.getText(), (String) cardNum.getText(), cardSec.getText(), cardExp.getText(), aReservation, roomUpgrades);
-            aGuest.setRoomUpgrades(roomUpgrades);
-
-            selectedCards.clear();
-            for(int i = 0; i < cardBoxes.size(); i++){
-                if(cardBoxes.get(i).isSelected()) {
-                    aGuest.setTypeOfCard(cardBoxes.get(i).getText());
-                }
-            }
-            selectedContact.clear();
-            for(int i = 0; i < contactBoxes.size(); i++){
-                if(contactBoxes.get(i).isSelected()) {
-                    aGuest.setContact(contactBoxes.get(i).getText());
-                }
-            }
-            System.out.println(aGuest.getCardName());
-            System.out.println(aGuest.getaReservation().getDate());
-            System.out.println(aGuest.getaReservation().getTime());
-/*            dispose();
-            boolean selectedTwo = heated.isSelected();
-            PastryItem newPItem = new PastryItem(selected, (String)endFlavor.getSelectedItem(), selectedTwo);
-            Main.setItemList(newPItem);
-            ItemPurchaseFrame newIPF = new ItemPurchaseFrame(true, false);
-            newIPF.setSize(450, 500);
-            newIPF.settField();*/
+            Guest guest = new Guest(nameTextField.getText(), phoneTextField.getText(), emailTextField.getText(), creditCardNameTextField.getText(), creditCardNumberTextField.getText(), creditCardSecurityDigitTextField.getText(), creditCardExpDateTextField.getText(), roomType, month, day, year, hours, minutes, roomUpgrades, cardType);
+            guests.add(guest);
         }
     }
 
-    class saveUpgradeListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent click){
-            TowelRentals newGuest = (TowelRentals) aGuest.getRoomUpgrades().get(0);
-            System.out.println(newGuest.getTowelQuantity());
-        }
-    }
-  class upgradeTypeListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent click) {
-           particularRoomUpgrades = (JComboBox) click.getSource();
-           String aParticularRoomUpgrade = (String) particularRoomUpgrades.getSelectedItem();
-           //System.out.println(aParticularRoomUpgrade);
-            //System.out.println("diego");
-           if(aRoomUpgrade == "Towel Rentals"){
-
-           }
-        }
-    }
-    class cancelButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent click) {
-            //new ItemPurchaseFrame(false, true);
-            dispose();
-            new MainFrame();
-        }
-    }
-    class particularRoomUpgradeListener implements ActionListener {
-            String[] quantity = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}; //Towel Rental, Party Favor Bag, Projector
-            String[] partyDecor = {"Hawaiian", "Sea Life", "Jungle", "Space", "Modern Theme"};
-            String[] meals = {"Bronze Meal Plan", "Silver Meal Plan", "Gold Meal Plan", "Platinum Meal Plan"};
-
-            @Override
-            public void actionPerformed(ActionEvent click) {
-                roomUpgrade = (JComboBox) click.getSource();
-                 aRoomUpgrade = (String) roomUpgrade.getSelectedItem();
-                if(aRoomUpgrade == "Meal Plan Upgrade"){
-                    particularRU.setText("Choose Meal Plan: ");
-                    particularRoomUpgrades.setModel(new JComboBox(meals).getModel());
-                }
-                else if(aRoomUpgrade == "Towel Rentals"){
-                    particularRU.setText("Quantity: ");
-                    System.out.println("Hello");
-                    particularRoomUpgrades.setModel(new JComboBox(quantity).getModel());
-                    System.out.println(aRoomUpgrade);
-                    //particularRoomUpgrades = (JComboBox) click.getSource();
-                    String towelAmount = (String) particularRoomUpgrades.getSelectedItem();
-                    System.out.println(towelAmount);
-                   /* RoomUpgrades towelObject = new TowelRentals();
-                    aGuest.upgrades.add(towelObject);*/
-                }
-                else if(aRoomUpgrade == "Party Favors Bag"){
-                    particularRU.setText("Quantity: ");
-                    particularRoomUpgrades.setModel(new JComboBox(quantity).getModel());
-                }
-                else if(aRoomUpgrade == "Projector"){
-                    particularRU.setText("Quantity: ");
-                    particularRoomUpgrades.setModel(new JComboBox(quantity).getModel());
-                }
-                else if(aRoomUpgrade == "Party Decoration and Set up"){
-                    particularRU.setText("Choose Set-Up: ");
-                    particularRoomUpgrades.setModel(new JComboBox(partyDecor).getModel());
-                }
-
-                panel.revalidate();
-                panel.repaint();
-
-                //dispose();
-        }
-    }
-    class roomUpgradeListener implements ActionListener {
+    class roomTypeListener implements ActionListener {
         String[] aquaWorldRoom = {"Meal Plan Upgrade", "Towel Rentals", "Party Favors Bag", "Projector", "Party Decoration and Set up"};
         String[] mediumParty = {"Meal Plan Upgrade", "Party Favors Bag", "Projector", "Party Decoration and Set up"};
         String[] smallPartyRoom = {"Meal Plan Upgrade", "Party Favors Bag", "Projector", "Party Decoration and Set up"};
         String[] karaokeAdultRoom = {"Add Meal Plan"};
-        String[] adultBillarRoom = {"Add Meal Plan"};
+        String[] adultBilliardRoom = {"Add Meal Plan"};
+
+        String[] toppingsArray = {"Cheese", "Pepperoni", "Ham", "Jalapeno", "Sausage", "Mushroom", "Pineapple", "Bell Pepper", "Onion", "Garlic Chicken"};
+        String[] sodaFlavorsArray = {"Coca-cola", "Diet Coke", "Canada Dry", "Orange Crush", "Squirt", "Root Beer"};
 
         @Override
         public void actionPerformed(ActionEvent click) {
-            roomTypes = (JComboBox) click.getSource();
+            String roomType = (String) roomTypes.getSelectedItem();
 
-            String aRoomType = (String) roomTypes.getSelectedItem();
-            //System.out.println("Inside!");
-            if(aRoomType == "Small Party Room"){
-                roomUpgrade.setModel(new JComboBox(smallPartyRoom).getModel());
-                //roomUpgrade.addItem(Arrays.toString(smallPartyRoom));
-            } else if (aRoomType == "Medium Party Room") {
-                roomUpgrade.setModel(new JComboBox(mediumParty).getModel());
+            toppings.setVisible(true);
+            sodaFlavors.setVisible(true);
+            if(roomType == "Small Party Room"){
+                upgradeType.setModel(new JComboBox(smallPartyRoom).getModel());
+                toppings.setModel(new JComboBox(toppingsArray).getModel());
+                sodaFlavors.setModel(new JComboBox(sodaFlavorsArray).getModel());
+            } else if (roomType == "Medium Party Room") {
+                upgradeType.setModel(new JComboBox(mediumParty).getModel());
+                toppings.setModel(new JComboBox(toppingsArray).getModel());
+                sodaFlavors.setModel(new JComboBox(sodaFlavorsArray).getModel());
+            } else if(roomType == "Aqua World Room"){
+                upgradeType.setModel(new JComboBox(aquaWorldRoom).getModel());
+                toppings.setModel(new JComboBox(toppingsArray).getModel());
+                sodaFlavors.setModel(new JComboBox(sodaFlavorsArray).getModel());
+            } else if(roomType == "Karaoke Room"){
+                upgradeType.setModel(new JComboBox(karaokeAdultRoom).getModel());
+                toppings.setVisible(false);
+                sodaFlavors.setVisible(false);
+            } else if(roomType == "Adult Billiard Room"){
+                upgradeType.setModel(new JComboBox(adultBilliardRoom).getModel());
+                toppings.setVisible(false);
+                sodaFlavors.setVisible(false);
             }
-            else if(aRoomType == "Aqua World Room"){
-                roomUpgrade.setModel(new JComboBox(aquaWorldRoom).getModel());
+            panel.revalidate();
+            panel.repaint();
+        }
+    }
+
+    class upgradeTypeListener implements ActionListener {
+        String[] quantity = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        String[] partyDecor = {"Hawaiian", "Sea Life", "Jungle", "Space", "Modern Theme"};
+        String[] meals = {"Bronze Meal Plan", "Silver Meal Plan", "Gold Meal Plan", "Platinum Meal Plan"};
+
+        @Override
+        public void actionPerformed(ActionEvent click) {
+            String aRoomUpgrade = (String) upgradeType.getSelectedItem();
+
+            if(aRoomUpgrade == "Meal Plan Upgrade"){
+                specificUpgrade.setModel(new JComboBox(meals).getModel());
+            } else if(aRoomUpgrade == "Towel Rentals"){
+                specificUpgrade.setModel(new JComboBox(quantity).getModel());
+            } else if(aRoomUpgrade == "Party Favors Bag"){
+                specificUpgrade.setModel(new JComboBox(quantity).getModel());
+            } else if(aRoomUpgrade == "Projector"){
+                specificUpgrade.setModel(new JComboBox(quantity).getModel());
+            } else if(aRoomUpgrade == "Party Decoration and Set up"){
+                specificUpgrade.setModel(new JComboBox(partyDecor).getModel());
             }
-            else if(aRoomType == "Karaoke Room"){
-                roomUpgrade.setModel(new JComboBox(karaokeAdultRoom).getModel());
-
-            }
-            else if(aRoomType == "Adult Billard Room"){
-                roomUpgrade.setModel(new JComboBox(adultBillarRoom).getModel());
-            }
-
-            roomUpgrade = (JComboBox) click.getSource();
-            String aRoomUpgrade = (String) roomUpgrade.getSelectedItem();
-            //System.out.println(aRoomUpgrade);
-            //myUpgrade.setName(aRoomUpgrade);
-
-
 
             panel.revalidate();
             panel.repaint();
         }
     }
+
+    class addUpgradeButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent click) {
+            String upgrade = (String) upgradeType.getSelectedItem();
+            String particularUpgrade = (String) specificUpgrade.getSelectedItem();
+
+            if (upgrade == "Towel Rentals") {
+                TowelRentals towelRentals = new TowelRentals(Integer.parseInt(particularUpgrade));
+                roomUpgrades.add(towelRentals);
+            } else if (upgrade == "Party Favors Bag") {
+                PartyFavorsBag partyFavorsBag = new PartyFavorsBag(Integer.parseInt(particularUpgrade));
+                roomUpgrades.add(partyFavorsBag);
+            } else if (upgrade == "Projector") {
+                Projector projector = new Projector(Integer.parseInt(particularUpgrade));
+                roomUpgrades.add(projector);
+            } else if (upgrade == "Party Decoration and Set up") {
+                PartyDecorationsAndSetUp partyDecorationsAndSetUp = new PartyDecorationsAndSetUp(particularUpgrade);
+                roomUpgrades.add(partyDecorationsAndSetUp);
+            }
+        }
+    }
+
 
 }

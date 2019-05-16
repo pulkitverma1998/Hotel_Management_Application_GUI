@@ -1,29 +1,24 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Guest implements BaseGuest {
-    protected List<String> typeOfCard = new ArrayList<>();
-    protected List<String> contactInfo = new ArrayList<>();
     private String name;
     private String phoneNum;
     private String email;
     private String cardName;
+    private String cardNum;
     private String securityDigits;
     private String expirationCard;
-    private String cardNum;
-    private Reservation aReservation;
-
+    private String cardType;
+    private String roomType;
+    private String month;
+    private String day;
+    private String year;
+    private String hours;
+    private String minutes;
     private ArrayList<RoomUpgrades> roomUpgrades;
 
-    public ArrayList<RoomUpgrades> getRoomUpgrades() {
-        return roomUpgrades;
-    }
 
-    public void setRoomUpgrades(ArrayList<RoomUpgrades> roomUpgrades) {
-        this.roomUpgrades = roomUpgrades;
-    }
-
-    public Guest(String name, String phoneNum, String email, String cardName, String cardNum, String securityDigits, String expirationCard, Reservation aReservation, ArrayList<RoomUpgrades> roomUpgrades) {
+    public Guest(String name, String phoneNum, String email, String cardName, String cardNum, String securityDigits, String expirationCard, String roomType, String month, String day, String year, String hours, String minutes, ArrayList<RoomUpgrades> roomUpgrades, String cardType) {
         this.name = name;
         this.phoneNum = phoneNum;
         this.email = email;
@@ -31,12 +26,23 @@ public class Guest implements BaseGuest {
         this.cardNum = cardNum;
         this.securityDigits = securityDigits;
         this.expirationCard = expirationCard;
-        this.aReservation = aReservation;
-        //this.aUpgrades = new ArrayList<>();
+        this.roomType = roomType;
+        this.roomUpgrades = roomUpgrades;
+        this.cardType = cardType;
+        this.month = month;
+        this.day = day;
+        this.year = year;
+        this.hours = hours;
+        this.minutes = minutes;
     }
 
-    public void addCardType(String aType){
-        this.typeOfCard.add(aType);
+
+    public ArrayList<RoomUpgrades> getRoomUpgrades() {
+        return roomUpgrades;
+    }
+
+    public void setRoomUpgrades(ArrayList<RoomUpgrades> roomUpgrades) {
+        this.roomUpgrades = roomUpgrades;
     }
 
     public void update() {
@@ -91,17 +97,6 @@ public class Guest implements BaseGuest {
         this.expirationCard = expirationCard;
     }
 
-/*    public String getTypeOfCard() {
-        return typeOfCard;
-    }*/
-
-    public void setTypeOfCard(String aType) {
-        this.typeOfCard.add(aType);
-    }
-
-    public void setContact(String aContact){
-        this.contactInfo.add(aContact);
-    }
     public String getCardNum() {
         return cardNum;
     }
@@ -110,33 +105,59 @@ public class Guest implements BaseGuest {
         this.cardNum = typeOfCard;
     }
 
-    public Reservation getaReservation() {
-        return aReservation;
+    public String getRoomType() {
+        return roomType;
     }
 
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getHours() {
+        return hours;
+    }
+
+    public void setHours(String hours) {
+        this.hours = hours;
+    }
+
+    public String getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(String minutes) {
+        this.minutes = minutes;
+    }
 }
 
-//    public String getCreditCard() {
-//        return creditCard;
-//    }
-//
-//    public void setCreditCard(String creditCard) {
-//        this.creditCard = creditCard;
-//    }
-//
-//    public String getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(String date) {
-//        this.date = date;
-//    }
-//
-//    public String getTime() {
-//        return time;
-//    }
-//
-//    public void setTime(String time) {
-//        this.time = time;
-//    }
-//}

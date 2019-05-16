@@ -1,16 +1,17 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class PartyDecorationsAndSetUp extends RoomUpgrades {
-    ArrayList<String> decorations;
+    String decorations;
 
-    public PartyDecorationsAndSetUp() {
+    public PartyDecorationsAndSetUp(String decorations) {
         super.setName("Party Decorations and Set-ups");
         super.setCost(100);
-        decorations = new ArrayList<>(Arrays.asList("Hawaiian", "Sea Life", "Jungle", "Space", "Modern Theme"));
+        this.decorations = decorations;
     }
 
-    public ArrayList<String> getDecorations() {
+    public String getDecorations() {
         return decorations;
+    }
+
+    public void setDecorations(String decorations) {
+        this.decorations = decorations;
     }
 }

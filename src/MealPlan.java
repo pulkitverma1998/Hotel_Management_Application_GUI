@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class MealPlan extends AbstractRoom {
